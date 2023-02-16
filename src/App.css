@@ -1,38 +1,57 @@
-.App {
-  text-align: center;
+:root {
+  --primary-color: #007bff; /* blue */
+  --secondary-color: #ffc107; /* orange */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.btn-orange {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.btn-orange:hover {
+  background-color: #f0a500; /* darker orange */
+  border-color: #f0a500; /* darker orange */
+  color: #fff;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.company-box {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.company-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.coupon-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.App-link {
-  color: #61dafb;
+.modal-content {
+  background-color: var(--secondary-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #fff; /* add a white text color to make it readable */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.modal h3 {
+  margin-top: 0;
 }
