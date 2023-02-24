@@ -106,6 +106,11 @@ function App() {
                 <p>Coupon code: {selectedCompany.couponCode}</p>
                 <p>Link: {selectedCompany.link}</p>
                 <div className="text-center">
+                {copied && (
+                    <div className="text-success mt-2">
+                      Copied to clipboard!
+                    </div>
+                  )}
                   <CopyToClipboard
                     text={selectedCompany.couponCode}
                     onCopy={handleCopy}
@@ -114,11 +119,7 @@ function App() {
                       Copy Coupon Code <FaCopy className="ml-2" />
                     </button>
                   </CopyToClipboard>
-                  {copied && (
-                    <div className="text-success mt-2">
-                      Copied to clipboard!
-                    </div>
-                  )}
+
                   <button className="btn btn-secondary" onClick={closeModal}>
                     Close
                   </button>
