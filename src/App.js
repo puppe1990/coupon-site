@@ -104,7 +104,11 @@ function App() {
                 <h3>{selectedCompany.name}</h3>
                 <p>{selectedCompany.discount}</p>
                 <p>Coupon code: {selectedCompany.couponCode}</p>
-                <p>Link: {selectedCompany.link}</p>
+                {selectedCompany.link && (
+                  <p>
+                    Link: <a href={selectedCompany.link}>Click here</a>
+                  </p>
+                )}
                 <div className="text-center">
                 {copied && (
                     <div className="text-success mt-2">
