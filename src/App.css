@@ -1,18 +1,10 @@
 :root {
   --primary-color: #007bff; /* blue */
-  --secondary-color: #ffc107; /* orange */
+  --secondary-color: #ffffff;
 }
 
-.btn-orange {
-  background-color: var(--secondary-color);
-  border-color: var(--secondary-color);
-  color: #fff;
-}
-
-.btn-orange:hover {
-  background-color: #f0a500; /* darker orange */
-  border-color: #f0a500; /* darker orange */
-  color: #fff;
+body {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .company-box {
