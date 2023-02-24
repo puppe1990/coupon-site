@@ -1,6 +1,7 @@
 :root {
   --primary-color: #007bff; /* blue */
   --secondary-color: #ffffff;
+  --bs-modal-bg: #ffffff; /* blue */
 }
 
 body {
@@ -37,12 +38,19 @@ body {
 }
 
 .modal-content {
-  background-color: var(--secondary-color);
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  color: #fff; /* add a white text color to make it readable */
+  color: #000000; /* add a white text color to make it readable */
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
+
 
 .modal h3 {
   margin-top: 0;
