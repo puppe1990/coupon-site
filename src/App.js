@@ -61,7 +61,7 @@ function App() {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
             <div className="input-group-append">
-              <button className="btn btn-primary" type="button">
+              <button className="btn btn-success" type="button">
                 Search
               </button>
             </div>
