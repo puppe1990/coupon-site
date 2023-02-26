@@ -3,6 +3,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FaCopy } from "react-icons/fa";
+import image1 from './images/yuool.png';
+import image2 from './images/mercado_diferente.png';
+import image3 from './images/cornershop.png';
 
 function App() {
   const [selectedCompany, setSelectedCompany] = useState(null);
@@ -11,20 +14,26 @@ function App() {
 
   const companies = [
     {
-      name: "Company 1",
-      logo: "https://via.placeholder.com/100x100",
-      discount: "20% off",
-      couponCode: "CODE123",
-      link: "",
+      name: "Cupom Yuool",
+      logo: image1,
+      discount: "15% de desconto Primeira Compra",
+      couponCode: "AFA355FFAE",
+      link: "https://www.yuool.com.br/?referrer_token=eRapyM",
     },
     {
-      name: "Company 2",
-      logo: "https://via.placeholder.com/100x100",
-      discount: "10% off",
-      couponCode: "CODE456",
-      link: "",
+      name: "Cupom Mercado Diferente",
+      logo: image2,
+      discount: "15% de desconto Primeira Compra na primeira cesta",
+      couponCode: "",
+      link: "https://mercdif.me/matheus-nunes-puppe",
     },
-    // add more companies here
+    {
+      name: "Cupom Cornershop",
+      logo: image3,
+      discount: "Frete Grátis Primeira e bônus de R$10 na primeira compra",
+      couponCode: "",
+      link: "https://corner.shop/r/6atd4nffm",
+    },
   ];
 
   const filteredCompanies = companies.filter((company) =>
@@ -48,21 +57,21 @@ function App() {
     <div className="App">
       <header className="bg-primary py-4">
         <div className="container text-center">
-          <h1 className="text-white">Welcome to Coupon Site</h1>
+          <h1 className="text-white">Bem vindo ao CupomCerto</h1>
           <p className="lead text-white">
-            Find the best deals and discounts from your favorite companies.
+            O seu destino para economizar com cupons de desconto
           </p>
           <div className="input-group mb-3">
             <input
               type="text"
               className="form-control"
-              placeholder="Search for company"
+              placeholder="Pesquisar empresa com cupom"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
             <div className="input-group-append">
               <button className="btn btn-success" type="button">
-                Search
+                Pesquisar
               </button>
             </div>
           </div>
@@ -90,7 +99,7 @@ function App() {
                         className="btn btn-primary"
                         onClick={() => showModal(company)}
                       >
-                        Show Coupon <FaCopy className="ml-2" />
+                        Mostrar cupom <FaCopy className="ml-2" />
                       </button>
                     </CopyToClipboard>
                   </div>
@@ -103,16 +112,18 @@ function App() {
               <div className="modal-content">
                 <h3>{selectedCompany.name}</h3>
                 <p>{selectedCompany.discount}</p>
-                <p>Coupon code: {selectedCompany.couponCode}</p>
+                {selectedCompany.couponCode && (
+                   <p>Coupon code: {selectedCompany.couponCode}</p>
+                )}
                 {selectedCompany.link && (
                   <p>
-                    Link: <a href={selectedCompany.link}>Click here</a>
+                    Link: <a href={selectedCompany.link}>Ir direto para o site!</a>
                   </p>
                 )}
                 <div className="text-center">
                 {copied && (
                     <div className="text-success mt-2">
-                      Copied to clipboard!
+                      Copiado para a área de transferência!
                     </div>
                   )}
                   <CopyToClipboard
@@ -120,12 +131,12 @@ function App() {
                     onCopy={handleCopy}
                   >
                     <button className="btn btn-primary">
-                      Copy Coupon Code <FaCopy className="ml-2" />
+                      Copiar código do cupom<FaCopy className="ml-2" />
                     </button>
                   </CopyToClipboard>
 
                   <button className="btn btn-secondary" onClick={closeModal}>
-                    Close
+                    Fechar
                   </button>
                 </div>
               </div>
