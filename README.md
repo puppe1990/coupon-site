@@ -1,6 +1,8 @@
 # Coupon Site
 Coupon Site is a web application that helps users find the best deals and discounts from their favorite companies. It allows users to browse a list of companies, view their discounts, and access coupon codes.
 
+![Screenshot from 2023-02-26 11-48-48](https://user-images.githubusercontent.com/8432835/221417824-8e2b3315-b70b-4f17-b80c-bd502d88b11f.png)
+
 ## Getting Started
 To run this application locally, you'll need to have Node.js and npm installed on your machine. Once you have those, follow these steps:
 
