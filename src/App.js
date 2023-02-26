@@ -57,7 +57,7 @@ function App() {
     <div className="App">
       <header className="bg-primary py-4">
         <div className="container text-center">
-          <h1 className="text-white">Bem vindo ao CupomCerto</h1>
+          <h1 className="text-white">Bem vindo ao Cupom Vantagens</h1>
           <p className="lead text-white">
             O seu destino para economizar com cupons de desconto
           </p>
