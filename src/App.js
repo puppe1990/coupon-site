@@ -38,7 +38,7 @@ function App() {
     {
       name: "Cupom Cornershop",
       logo: image4,
-      discount: "Frete Grátis Primeira e bônus de R$10 na primeira compra",
+      discount: "Frete Grátis e bônus de R$10 na primeira compra",
       couponCode: "",
       link: "https://corner.shop/r/6atd4nffm",
     },
@@ -121,7 +121,7 @@ function App() {
                 <h3>{selectedCompany.name}</h3>
                 <p>{selectedCompany.discount}</p>
                 {selectedCompany.couponCode && (
-                   <p>Coupon code: {selectedCompany.couponCode}</p>
+                   <p>Código Cupom: {selectedCompany.couponCode}</p>
                 )}
                 {selectedCompany.link && (
                   <p>
