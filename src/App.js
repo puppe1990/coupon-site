@@ -5,7 +5,8 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FaCopy } from "react-icons/fa";
 import image1 from './images/yuool.png';
 import image2 from './images/mercado_diferente.png';
-import image3 from './images/cornershop.png';
+import image3 from './images/insider.png';
+import image4 from './images/cornershop.png';
 
 function App() {
   const [selectedCompany, setSelectedCompany] = useState(null);
@@ -28,8 +29,15 @@ function App() {
       link: "https://mercdif.me/matheus-nunes-puppe",
     },
     {
-      name: "Cupom Cornershop",
+      name: "Cupom Insider",
       logo: image3,
+      discount: "R$30 OFF em compras acima de R$150",
+      couponCode: "",
+      link: "https://www.insiderstore.com.br/a/rewards/r/rx1mc3Fv",
+    },
+    {
+      name: "Cupom Cornershop",
+      logo: image4,
       discount: "Frete Grátis Primeira e bônus de R$10 na primeira compra",
       couponCode: "",
       link: "https://corner.shop/r/6atd4nffm",
