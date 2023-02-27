@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { initGA, logPageView } from './ga';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -11,6 +12,10 @@ import image5 from './images/zee-now.png';
 import image6 from './images/cornershop.png';
 
 function App() {
+  useEffect(() => {
+    initGA();
+    logPageView();
+  }, []);
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [copied, setCopied] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
