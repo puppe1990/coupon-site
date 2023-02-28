@@ -10,6 +10,7 @@ import image3 from './images/insider.png';
 import image4 from './images/ze.png';
 import image5 from './images/zee-now.png';
 import image6 from './images/cornershop.png';
+import image7 from './images/zee-dog.png';
 
 function App() {
   useEffect(() => {
@@ -62,6 +63,13 @@ function App() {
       discount: "Frete Grátis e bônus de R$10 na primeira compra",
       couponCode: "",
       link: "https://corner.shop/r/6atd4nffm",
+    },
+    {
+      name: "Cupom Zee Dog",
+      logo: image7,
+      discount: "15% de desconto para os amigos desavisados que nunca compraram na Zee.Dog",
+      couponCode: "",
+      link: "http://zeedog.refr.cc/matheusnunespuppe ",
     },
   ];
 
