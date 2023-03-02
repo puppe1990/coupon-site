@@ -11,6 +11,9 @@ import image4 from './images/ze.png';
 import image5 from './images/zee-now.png';
 import image6 from './images/cornershop.png';
 import image7 from './images/zee-dog.png';
+import image8 from './images/recarga-pay.png';
+import image9 from './images/99-viagem.png';
+import image10 from './images/99-motorista.png';
 
 function App() {
   useEffect(() => {
@@ -71,6 +74,30 @@ function App() {
         '15% de desconto para os amigos desavisados que nunca compraram na Zee.Dog',
       couponCode: '',
       link: 'http://zeedog.refr.cc/matheusnunespuppe ',
+    },
+    {
+      name: 'Cupom Recarga Pay',
+      logo: image8,
+      discount:
+        'Para ganhar R$20. É só baixar o App e fazer sua 1ª compra em Pix com qualquer cartão em até 12x',
+      couponCode: 'matpup024',
+      link: 'http://recargapay.com.br/r/matpup024-lO ',
+    },
+    {
+      name: 'Cupom 99',
+      logo: image9,
+      discount:
+        'Desconto primeira viagem',
+      couponCode: '',
+      link: 'https://d.99app.com/RUdWne2',
+    },
+    {
+      name: 'Convite 99 motorista',
+      logo: image10,
+      discount:
+        'Você foi convidado para ser motorista parceiro 99! ',
+      couponCode: '',
+      link: 'https://d.99app.com/e1ByJVE',
     },
   ];
 
