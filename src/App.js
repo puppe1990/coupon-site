@@ -11,9 +11,10 @@ import image4 from './images/ze.png';
 import image5 from './images/zee-now.png';
 import image6 from './images/cornershop.png';
 import image7 from './images/zee-dog.png';
-import image8 from './images/recarga-pay.png';
-import image9 from './images/99-viagem.png';
-import image10 from './images/99-motorista.png';
+import image8 from './images/petlove-plano.png';
+import image9 from './images/recarga-pay.png';
+import image10 from './images/99-viagem.png';
+import image11 from './images/99-motorista.png';
 
 function App() {
   useEffect(() => {
@@ -76,8 +77,16 @@ function App() {
       link: 'http://zeedog.refr.cc/matheusnunespuppe ',
     },
     {
-      name: 'Cupom Recarga Pay',
+      name: 'Cupom Petlove Plano de saúde',
       logo: image8,
+      discount:
+        '20% OFF na 1ª mensalidade dos Planos de Saúde',
+      couponCode: '',
+      link: 'https://saude.petlove.com.br/indicacao/laxi9ghpmmofhqew ',
+    },
+    {
+      name: 'Cupom Recarga Pay',
+      logo: image9,
       discount:
         'Para ganhar R$20. É só baixar o App e fazer sua 1ª compra em Pix com qualquer cartão em até 12x',
       couponCode: 'matpup024',
@@ -85,7 +94,7 @@ function App() {
     },
     {
       name: 'Cupom 99',
-      logo: image9,
+      logo: image10,
       discount:
         'Desconto primeira viagem',
       couponCode: '',
@@ -93,7 +102,7 @@ function App() {
     },
     {
       name: 'Convite 99 motorista',
-      logo: image10,
+      logo: image11,
       discount:
         'Você foi convidado para ser motorista parceiro 99! ',
       couponCode: '',
