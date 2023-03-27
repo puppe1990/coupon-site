@@ -159,6 +159,15 @@ function App() {
           <ul className="list-inline mb-0">
             <li className="list-inline-item">
               <a
+                href="https://blog.unitycredito.com.br"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Blog
+              </a>
+            </li>
+            <li className="list-inline-item">
+              <a
                 href="https://www.linkedin.com/company/unity-credito"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -176,7 +185,9 @@ function App() {
               </a>
             </li>
             <li className="list-inline-item">
-              <a href="mailto:contato@unitycredito.com.br">Contato</a>
+              <a href="mailto:alessandro.martins@unitycredito.com.br">
+                Contato
+              </a>
             </li>
           </ul>
         </div>
