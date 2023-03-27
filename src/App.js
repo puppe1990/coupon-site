@@ -154,6 +154,33 @@ function App() {
           )}
         </div>
       </div>
+      <footer className="bg-dark py-4">
+        <div className="container text-center">
+          <ul className="list-inline mb-0">
+            <li className="list-inline-item">
+              <a
+                href="https://www.linkedin.com/company/unity-credito"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+            </li>
+            <li className="list-inline-item">
+              <a
+                href="https://www.instagram.com/unity_credito/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram
+              </a>
+            </li>
+            <li className="list-inline-item">
+              <a href="mailto:contato@unitycredito.com.br">Contato</a>
+            </li>
+          </ul>
+        </div>
+      </footer>
     </div>
   );
 }
