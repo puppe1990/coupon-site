@@ -6,6 +6,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FaCopy } from "react-icons/fa";
 import image1 from "./images/biz.png";
 import image2 from "./images/inter.png";
+import company_logo from "./images/unity_logo.jpeg";
 
 function App() {
   useEffect(() => {
@@ -54,6 +55,7 @@ function App() {
     <div className="App">
       <header className="bg-primary py-4">
         <div className="container text-center">
+          <img src={company_logo} alt="company logo" />
           <h1 className="text-white">Bem vindo a Unity Crédito</h1>
           <p className="lead text-white">
             O auxílio financeiro que você precisa
