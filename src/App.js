@@ -30,7 +30,7 @@ function App() {
       logo: image2,
       discount: "Empréstimo Consignado Inter",
       couponCode: "7066430B",
-      link: "https://www.youtube.com/watch?v=yk6-iuIUe6I",
+      link: "https://www.bancointer.com.br/pra-voce/emprestimos/emprestimo-consignado-publico/?codigoIndiqueGanhe=7066430B",
     },
   ];
 
