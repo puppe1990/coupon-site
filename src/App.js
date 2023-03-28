@@ -19,7 +19,7 @@ function App() {
 
   const companies = [
     {
-      name: "Empréstimo Biz Capital",
+      name: "Empréstimo Empresarial Biz Capital",
       logo: image1,
       discount: "Empréstimo empresarial",
       couponCode: "",
@@ -31,6 +31,13 @@ function App() {
       discount: "Empréstimo Consignado Inter",
       couponCode: "7066430B",
       link: "https://www.bancointer.com.br/pra-voce/emprestimos/emprestimo-consignado-publico/?codigoIndiqueGanhe=7066430B",
+    },
+    {
+      name: "Empréstimo Empresarial iouu",
+      logo: image2,
+      discount: "Empréstimo Empresarial iouu",
+      couponCode: "",
+      link: "https://unitycredito.iouu.com.br/",
     },
   ];
 
