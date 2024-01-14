@@ -16,6 +16,7 @@ import image9 from "./images/recarga-pay.png";
 import image10 from "./images/99-viagem.png";
 import image11 from "./images/99-motorista.png";
 import image12 from "./images/woba.png";
+import image13 from "./images/daki.png";
 
 function App() {
   useEffect(() => {
@@ -40,6 +41,13 @@ function App() {
       discount: "15% de desconto Primeira Compra na primeira cesta",
       couponCode: "",
       link: "https://mercdif.me/matheus-nunes-puppe",
+    },
+    {
+      name: "Cupom Daki",
+      logo: image13,
+      discount: "R$50 desconto primeiro pedido",
+      couponCode: "MP739028",
+      link: "https://soudaki.onelink.me/FYIE/3nrc647q?deep_link_value=referalCode%2FTVA3MzkwMjg%3D",
     },
     {
       name: "Cupom Insider",
