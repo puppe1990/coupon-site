@@ -17,6 +17,7 @@ import image10 from "./images/99-viagem.png";
 import image11 from "./images/99-motorista.png";
 import image12 from "./images/woba.png";
 import image13 from "./images/daki.png";
+import image14 from "./images/uber.png";
 
 function App() {
   useEffect(() => {
@@ -106,6 +107,13 @@ function App() {
       discount: "Desconto primeira viagem",
       couponCode: "",
       link: "https://d.99app.com/RUdWne2",
+    },
+    {
+      name: "Cupom Uber",
+      logo: image14,
+      discount: "Economizar BRL25 nas 5 primeiras viagens.",
+      couponCode: "x9aqpdda6pkz",
+      link: "https://referrals.uber.com/refer?id=x9aqpdda6pkz",
     },
     {
       name: "Convite 99 motorista",
