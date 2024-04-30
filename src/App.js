@@ -80,6 +80,20 @@ function App() {
       link: "https://zeenow.app.link/FFtaECeYh4",
     },
     {
+      name: "Cupom Klin",
+      logo: "https://www.socialsoul.com.vc/programas/BR/8997/logo_185x140.png",
+      discount: "48 horas de frete grátis",
+      couponCode: "",
+      link: "https://compre.vc/v2/121c3b83475",
+    },
+    {
+      name: "Cupom Basico.com",
+      logo: "https://www.socialsoul.com.vc/programas/BR/5887/logo_185x140.png",
+      discount: "Frete Grátis na primeira compra",
+      couponCode: "",
+      link: "https://compre.vc/v2/12185a97324",
+    },
+    {
       "name": "Home is...",
       "logo": "https://www.lomadee.com/programas/BR/6450/logo_185x140.png",
       "discount": "FRETE GR\u00c1TIS (CAPITAIS) A PARTIR DE R$150 EM TODO SITE",
