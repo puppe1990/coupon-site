@@ -52,6 +52,13 @@ function App() {
       link: "https://www.petlove.com.br/?coupon=@MAT417915",
     },
     {
+      "name": "Nike",
+      "logo": "https://www.lomadee.com/programas/BR/5901/logo_185x140.png",
+      "discount": "20% OFF em Produtos Downshifter e Revolution na loja Nike",
+      "couponCode": "CORRIDA20",
+      "link": "https://oferta.vc/v2/121abf8c0b7"
+    },
+    {
       name: "Cupom Daki",
       logo: image13,
       discount: "R$50 desconto primeiro pedido",
@@ -78,6 +85,13 @@ function App() {
       discount: "ganhe R$25 de desconto",
       couponCode: "JJOASW",
       link: "https://zeenow.app.link/FFtaECeYh4",
+    },
+    {
+      "name": "Lauri Esporte 6",
+      "logo": "https://www.lomadee.com/programas/BR/7541/logo_185x140.png",
+      "discount": "10% de Desconto em Produtos Nike",
+      "couponCode": "NIKENOTA10",
+      "link": "https://oferta.vc/v2/12105904d43"
     },
     {
       name: "Cupom Klin",
@@ -455,13 +469,6 @@ function App() {
         "logo": "https://www.lomadee.com/programas/BR/7541/logo_185x140.png",
         "discount": "10% de Desconto em Produtos Salomon",
         "couponCode": "SALOMON10",
-        "link": "https://oferta.vc/v2/12105904d43"
-    },
-    {
-        "name": "Lauri Esporte 6",
-        "logo": "https://www.lomadee.com/programas/BR/7541/logo_185x140.png",
-        "discount": "10% de Desconto em Produtos Nike",
-        "couponCode": "NIKENOTA10",
         "link": "https://oferta.vc/v2/12105904d43"
     },
     {
@@ -1072,13 +1079,6 @@ function App() {
         "discount": "DIA DAS M\u00c3ES",
         "couponCode": "MAE15",
         "link": "https://oferta.vc/v2/121f303c508"
-    },
-    {
-        "name": "Nike",
-        "logo": "https://www.lomadee.com/programas/BR/5901/logo_185x140.png",
-        "discount": "20% OFF em Produtos Downshifter e Revolution na loja Nike",
-        "couponCode": "CORRIDA20",
-        "link": "https://oferta.vc/v2/121abf8c0b7"
     },
     {
         "name": "Moveis Carraro 2",
