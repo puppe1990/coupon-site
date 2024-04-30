@@ -18,6 +18,7 @@ import image11 from "./images/99-motorista.png";
 import image12 from "./images/woba.png";
 import image13 from "./images/daki.png";
 import image14 from "./images/uber.png";
+import image15 from "./images/petlove.png";
 
 function App() {
   useEffect(() => {
@@ -42,6 +43,13 @@ function App() {
       discount: "15% de desconto Primeira Compra na primeira cesta",
       couponCode: "",
       link: "https://mercdif.me/matheus-nunes-puppe",
+    },
+    {
+      name: "Cupom Petlove",
+      logo: image15,
+      discount: "Ganhe R$20 em compras acima de R$100 na primeira compra",
+      couponCode: "@MAT417915",
+      link: "https://www.petlove.com.br/?coupon=@MAT417915",
     },
     {
       name: "Cupom Daki",
