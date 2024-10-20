@@ -21,6 +21,13 @@
     "link": "https://facio.com.br?amigo=ff3b7184-c94a-426c-9d73-a3838f27b050&utm_source=web"
   },
   {
+    "name": "Cupom Trela",
+    "logo": "trela.png",
+    "discount": "Use meu código de desconto para ganhar 25% OFF na sua primeira compra!",
+    "couponCode": "MAP9973",
+    "link": "https://trela.com.br/emporio/1?programamgm"
+  },
+  {
     "name": "Cupom Petlove",
     "logo": "petlove.png",
     "discount": "Ganhe R$20 em compras acima de R$100 na primeira compra",
