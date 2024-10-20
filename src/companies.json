@@ -1,0 +1,107 @@
+[
+  {
+    "name": "Cupom Yuool",
+    "logo": "yuool.png",
+    "discount": "15% de desconto Primeira Compra",
+    "couponCode": "AFA355FFAE",
+    "link": "https://www.yuool.com.br/?referrer_token=eRapyM"
+  },
+  {
+    "name": "Cupom Mercado Diferente",
+    "logo": "mercado_diferente.png",
+    "discount": "15% de desconto Primeira Compra na primeira cesta",
+    "couponCode": "",
+    "link": "https://mercdif.me/matheus-nunes-puppe"
+  },
+  {
+    "name": "Cupom Petlove",
+    "logo": "petlove.png",
+    "discount": "Ganhe R$20 em compras acima de R$100 na primeira compra",
+    "couponCode": "@MAT417915",
+    "link": "https://www.petlove.com.br/?coupon=@MAT417915"
+  },
+  {
+    "name": "Nike",
+    "logo": "https://www.lomadee.com/programas/BR/5901/logo_185x140.png",
+    "discount": "20% OFF em Produtos Downshifter e Revolution na loja Nike",
+    "couponCode": "CORRIDA20",
+    "link": "https://oferta.vc/v2/121abf8c0b7"
+  },
+  {
+    "name": "Cupom Daki",
+    "logo": "daki.png",
+    "discount": "R$50 desconto primeiro pedido",
+    "couponCode": "MP739028",
+    "link": "https://soudaki.onelink.me/FYIE/3nrc647q?deep_link_value=referalCode%2FTVA3MzkwMjg%3D"
+  },
+  {
+    "name": "Cupom Insider",
+    "logo": "insider.png",
+    "discount": "R$30 OFF em compras acima de R$150",
+    "couponCode": "",
+    "link": "https://www.insiderstore.com.br/a/rewards/r/rx1mc3Fv"
+  },
+  {
+    "name": "Cupom Zé Delivery",
+    "logo": "ze.png",
+    "discount": "Cupom de R$10 na primeira compra",
+    "couponCode": "MAPUPPJYG",
+    "link": "https://ze.sng.link/Dm9m7/5q7i/r_07d9c4b7a3"
+  },
+  {
+    "name": "Cupom Zee.now",
+    "logo": "zee-now.png",
+    "discount": "ganhe R$25 de desconto",
+    "couponCode": "JJOASW",
+    "link": "https://zeenow.app.link/FFtaECeYh4"
+  },
+  {
+    "name": "Cupom Zee Dog",
+    "logo": "zee-dog.png",
+    "discount": "15% de desconto para os amigos desavisados que nunca compraram na Zee.Dog",
+    "couponCode": "",
+    "link": "http://zeedog.refr.cc/matheusnunespuppe"
+  },
+  {
+    "name": "Cupom Petlove Plano de saúde",
+    "logo": "petlove-plano.png",
+    "discount": "20% OFF na 1ª mensalidade dos Planos de Saúde",
+    "couponCode": "",
+    "link": "https://saude.petlove.com.br/indicacao/laxi9ghpmmofhqew"
+  },
+  {
+    "name": "Cupom Recarga Pay",
+    "logo": "recarga-pay.png",
+    "discount": "Para ganhar R$20. É só baixar o App e fazer sua 1ª compra em Pix com qualquer cartão em até 12x",
+    "couponCode": "matpup024",
+    "link": "http://recargapay.com.br/r/matpup024-lO"
+  },
+  {
+    "name": "Cupom 99",
+    "logo": "99-viagem.png",
+    "discount": "Desconto primeira viagem",
+    "couponCode": "",
+    "link": "https://d.99app.com/RUdWne2"
+  },
+  {
+    "name": "Cupom Uber",
+    "logo": "uber.png",
+    "discount": "Economizar BRL25 nas 5 primeiras viagens.",
+    "couponCode": "x9aqpdda6pkz",
+    "link": "https://referrals.uber.com/refer?id=x9aqpdda6pkz"
+  },
+  {
+    "name": "Convite 99 motorista",
+    "logo": "99-motorista.png",
+    "discount": "Você foi convidado para ser motorista parceiro 99!",
+    "couponCode": "",
+    "link": "https://d.99app.com/e1ByJVE"
+  },
+  {
+    "name": "Diária Woba",
+    "logo": "woba.png",
+    "discount": "Você ganhou reserva grátis em qualquer espaço de coworking",
+    "couponCode": "",
+    "link": "https://bnc.lt/woba-referral?rid=r43533"
+  }
+]
