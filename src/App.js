@@ -32,7 +32,7 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="bg-primary text-primary-foreground py-8">
+      <header className="bg-[hsl(var(--primary))] text-primary-foreground py-8">
         <div className="container mx-auto text-center">
           <h1 className="text-4xl font-bold mb-4">Cupom Vantagens</h1>
           <p className="text-xl mb-6">Seu destino para economizar com cupons de desconto</p>
@@ -54,14 +54,14 @@ const App = () => {
       <main className="container mx-auto py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCompanies.map((company) => (
-            <div key={company.name} className="bg-card text-card-foreground rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
+            <div key={company.name} className="bg-white rounded-lg shadow-md overflow-hidden">
               <img src={company.logo} alt={company.name} className="w-full h-48 object-cover" />
               <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2">{company.name}</h3>
-                <p className="text-muted-foreground mb-4">{company.discount}</p>
+                <p className="text-gray-600 mb-4">{company.discount}</p>
                 <Button
                   onClick={() => setSelectedCompany(company)}
-                  className="w-full"
+                  className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
                 >
                   Mostrar cupom
                 </Button>
@@ -72,7 +72,7 @@ const App = () => {
       </main>
 
       <Dialog open={selectedCompany !== null} onOpenChange={() => setSelectedCompany(null)}>
-        <DialogContent className="bg-background text-foreground">
+        <DialogContent className="bg-white">
           <DialogHeader>
             <DialogTitle>{selectedCompany?.name}</DialogTitle>
             <DialogDescription>{selectedCompany?.discount}</DialogDescription>
@@ -81,14 +81,17 @@ const App = () => {
             <div className="mt-4">
               <p className="text-lg font-semibold mb-2">Código do Cupom:</p>
               <div className="flex items-center space-x-2">
-                <Input value={selectedCompany.couponCode} readOnly className="flex-grow bg-muted text-muted-foreground" />
-                <Button onClick={() => handleCopy(selectedCompany.couponCode)}>
+                <Input value={selectedCompany.couponCode} readOnly className="flex-grow bg-gray-100" />
+                <Button 
+                  onClick={() => handleCopy(selectedCompany.couponCode)} 
+                  className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+                >
                   {copied ? <Check size={16} className="mr-2" /> : <Copy size={16} className="mr-2" />}
                   {copied ? 'Copiado' : 'Copiar'}
                 </Button>
               </div>
               {copied && (
-                <Alert className="mt-2 bg-muted">
+                <Alert className="mt-2 bg-green-100 text-green-800">
                   <AlertTitle>Sucesso!</AlertTitle>
                   <AlertDescription>Código copiado para a área de transferência.</AlertDescription>
                 </Alert>
@@ -98,18 +101,25 @@ const App = () => {
           {selectedCompany?.link && (
             <div className="mt-4">
               <p className="text-lg font-semibold mb-2">Link para o site:</p>
-              <a
-                href={selectedCompany.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
+              <Button
+                asChild
+                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               >
-                Ir para o site
-              </a>
+                <a
+                  href={selectedCompany.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ir para o site
+                </a>
+              </Button>
             </div>
           )}
           <DialogClose asChild>
-            <Button variant="outline" className="mt-4">
+            <Button 
+              variant="outline" 
+              className="mt-4 border border-gray-300 text-gray-700 font-semibold py-2 px-4 rounded-md transition duration-300 ease-in-out hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
+            >
               <X size={16} className="mr-2" /> Fechar
             </Button>
           </DialogClose>
