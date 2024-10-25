@@ -3,6 +3,7 @@ import { Search, X } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose } from './components/ui/dialog';
 import { Input } from './components/ui/input';
 import { Button } from './components/ui/button';
+import companiesData from './companies.json';
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -11,35 +12,28 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchCompanies = async () => {
+    const formatCompanies = () => {
       setIsLoading(true);
       try {
-        const response = await fetch('https://data.afilio.com.br/campaign?affid=168246&token=MV7B3j168246');
-        const data = await response.json();
-        const campaignData = data[0]['Affiliate Campaign'];
-        const formattedCompanies = Object.values(campaignData)
-          .filter(company => 
-            company.category_name === "Aposta / Cassino" &&
-            company.channels[0][0].campaign_site_status_description === "Aprovado"
-          )
-          .map(company => ({
-            id: company.campaign_id,
-            name: company.campaign_name,
-            logo: company.url,
-            link: company.url,
-            status: company.campaign_status_description,
-            category: company.category_name,
-            commissions: company.commissions
-          }));
+        const formattedCompanies = Object.values(companiesData[0]).map(company => ({
+          id: company.creative_id,
+          name: company.campaign_name,
+          logo: company.image_url,
+          link: company.shortened,
+          status: 'Aprovado', // Assuming all companies in the JSON are approved
+          category: 'Aposta / Cassino', // Assuming all companies are in this category
+          title: company.title,
+          description: company.description,
+        }));
         setCompanies(formattedCompanies);
       } catch (error) {
-        console.error('Error fetching companies:', error);
+        console.error('Error formatting companies:', error);
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchCompanies();
+    formatCompanies();
   }, []);
 
   const filteredCompanies = companies.filter((company) =>
@@ -79,7 +73,7 @@ const App = () => {
                 <img src={company.logo} alt={company.name} className="w-full h-48 object-cover" />
                 <div className="p-4">
                   <h3 className="text-xl font-semibold mb-2">{company.name}</h3>
-                  <p className="text-gray-600 mb-4">{company.category}</p>
+                  <p className="text-gray-600 mb-4">{company.title}</p>
                   <Button
                     onClick={() => setSelectedCompany(company)}
                     className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
@@ -97,16 +91,12 @@ const App = () => {
         <DialogContent className="bg-white">
           <DialogHeader>
             <DialogTitle>{selectedCompany?.name}</DialogTitle>
-            <DialogDescription>{selectedCompany?.category}</DialogDescription>
+            <DialogDescription>{selectedCompany?.title}</DialogDescription>
           </DialogHeader>
-          {selectedCompany?.commissions && selectedCompany.commissions.length > 0 && (
+          {selectedCompany?.description && (
             <div className="mt-4">
-              <p className="text-lg font-semibold mb-2">Comissão:</p>
-              {selectedCompany.commissions.map((commission, index) => (
-                <p key={index}>
-                  {commission.comission_category}: {commission.affiliate_comission_value} {commission.currency}
-                </p>
-              ))}
+              <p className="text-lg font-semibold mb-2">Descrição:</p>
+              <p>{selectedCompany.description}</p>
             </div>
           )}
           {selectedCompany?.link && (
