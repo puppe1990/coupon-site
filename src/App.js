@@ -10,6 +10,7 @@ const App = () => {
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [companies, setCompanies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [imageOrientation, setImageOrientation] = useState('horizontal');
 
   useEffect(() => {
     const formatCompanies = () => {
@@ -39,6 +40,11 @@ const App = () => {
   const filteredCompanies = companies.filter((company) =>
     company.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handleImageLoad = (event) => {
+    const { naturalWidth, naturalHeight } = event.target;
+    setImageOrientation(naturalWidth >= naturalHeight ? 'horizontal' : 'vertical');
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -88,11 +94,19 @@ const App = () => {
       </main>
 
       <Dialog open={selectedCompany !== null} onOpenChange={() => setSelectedCompany(null)}>
-        <DialogContent className="bg-white">
+        <DialogContent className="bg-white max-w-3xl">
           <DialogHeader>
             <DialogTitle>{selectedCompany?.name}</DialogTitle>
             <DialogDescription>{selectedCompany?.title}</DialogDescription>
           </DialogHeader>
+          <div className={`mt-4 ${imageOrientation === 'vertical' ? 'max-h-[70vh] overflow-y-auto' : ''}`}>
+            <img 
+              src={selectedCompany?.logo} 
+              alt={selectedCompany?.name} 
+              className={`w-full h-auto object-contain ${imageOrientation === 'vertical' ? 'max-h-[70vh]' : ''}`}
+              onLoad={handleImageLoad}
+            />
+          </div>
           {selectedCompany?.description && (
             <div className="mt-4">
               <p className="text-lg font-semibold mb-2">Descrição:</p>
