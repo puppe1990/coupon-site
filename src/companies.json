@@ -8,12 +8,12 @@
     "link": "https://www.yuool.com.br/?referrer_token=eRapyM",
     "description": "Yuool é uma plataforma de compras online que oferece produtos com preços competitivos e entrega rápida. Com o cupom de primeira compra, você pode economizar 15% em sua primeira experiência de compra.",
     "category": "E-commerce",
-    "validUntil": "31/12/2024",
+    "validUntil": "31/12/2025",
     "terms": "Válido apenas para primeira compra. Não cumulativo com outras promoções.",
     "companyInfo": {
       "website": "https://www.yuool.com.br",
       "founded": "2020",
-      "description": "Plataforma de e-commerce focada em oferecer produtos de qualidade com preços acessíveis e excelente experiência do cliente."
+      "description": "Plataforma de e-commerce brasileira focada em oferecer produtos de qualidade com preços acessíveis, entrega rápida e excelente experiência do cliente."
     }
   },
   {
@@ -25,12 +25,12 @@
     "link": "https://mercdif.me/matheus-nunes-puppe",
     "description": "Mercado Diferente é uma plataforma de delivery de supermercado que oferece produtos frescos e de qualidade com entrega rápida. Economize 15% na sua primeira cesta de compras.",
     "category": "Delivery",
-    "validUntil": "31/12/2024",
+    "validUntil": "31/12/2025",
     "terms": "Válido apenas para primeira compra. Desconto aplicado automaticamente no carrinho.",
     "companyInfo": {
       "website": "https://mercdif.me",
       "founded": "2019",
-      "description": "Plataforma de delivery de supermercado que conecta consumidores a estabelecimentos locais, oferecendo conveniência e produtos frescos."
+      "description": "Plataforma de delivery de supermercado que conecta consumidores a estabelecimentos locais, oferecendo conveniência, produtos frescos e entrega rápida."
     }
   },
   {
@@ -42,12 +42,12 @@
     "link": "https://facio.com.br?amigo=ff3b7184-c94a-426c-9d73-a3838f27b050&utm_source=web",
     "description": "Facio é uma fintech que permite antecipar seu salário de forma rápida e segura. Tenha acesso ao seu dinheiro quando precisar, sem burocracias.",
     "category": "Fintech",
-    "validUntil": "31/12/2024",
+    "validUntil": "31/12/2025",
     "terms": "Serviço disponível para funcionários de empresas parceiras. Taxas aplicáveis conforme política da empresa.",
     "companyInfo": {
       "website": "https://facio.com.br",
       "founded": "2021",
-      "description": "Fintech brasileira que revoluciona o acesso ao salário, permitindo que funcionários antecipem parte de seus vencimentos de forma rápida e segura."
+      "description": "Fintech brasileira que revoluciona o acesso ao salário, permitindo que funcionários antecipem parte de seus vencimentos de forma rápida, segura e sem burocracias."
     }
   },
   {
@@ -56,7 +56,16 @@
     "logo": "trela.png",
     "discount": "Use meu código de desconto para ganhar 25% OFF na sua primeira compra!",
     "couponCode": "MAP9973",
-    "link": "https://trela.com.br/emporio/1?programamgm"
+    "link": "https://trela.com.br/emporio/1?programamgm",
+    "description": "Trela é uma plataforma de e-commerce que oferece produtos diversos com preços competitivos e entrega rápida. Economize 25% na sua primeira compra com o código de desconto.",
+    "category": "E-commerce",
+    "validUntil": "31/12/2025",
+    "terms": "Válido apenas para primeira compra. Não cumulativo com outras promoções.",
+    "companyInfo": {
+      "website": "https://trela.com.br",
+      "founded": "2018",
+      "description": "Plataforma de e-commerce brasileira que oferece uma ampla variedade de produtos com foco em qualidade, preços competitivos e excelente experiência do cliente."
+    }
   },
   {
     "id": "petlove",
@@ -64,7 +73,16 @@
     "logo": "petlove.png",
     "discount": "Ganhe R$20 em compras acima de R$100 na primeira compra",
     "couponCode": "@MAT417915",
-    "link": "https://www.petlove.com.br/?coupon=@MAT417915"
+    "link": "https://www.petlove.com.br/?coupon=@MAT417915",
+    "description": "Petlove é a maior plataforma de produtos para pets do Brasil, oferecendo rações, brinquedos, medicamentos e acessórios com entrega rápida e preços competitivos.",
+    "category": "Pet Shop",
+    "validUntil": "31/12/2025",
+    "terms": "Válido para primeira compra acima de R$100. Não cumulativo com outras promoções.",
+    "companyInfo": {
+      "website": "https://www.petlove.com.br",
+      "founded": "2013",
+      "description": "Maior pet shop online do Brasil, oferecendo produtos de qualidade para cães, gatos e outros pets com conveniência e entrega rápida."
+    }
   },
   {
     "id": "daki",
@@ -72,7 +90,16 @@
     "logo": "daki.png",
     "discount": "R$50 desconto primeiro pedido",
     "couponCode": "MP739028",
-    "link": "https://soudaki.onelink.me/FYIE/3nrc647q?deep_link_value=referalCode%2FTVA3MzkwMjg%3D"
+    "link": "https://soudaki.onelink.me/FYIE/3nrc647q?deep_link_value=referalCode%2FTVA3MzkwMjg%3D",
+    "description": "Daki é uma plataforma de delivery que conecta consumidores a restaurantes e estabelecimentos locais, oferecendo comida fresca e entrega rápida.",
+    "category": "Delivery",
+    "validUntil": "31/12/2025",
+    "terms": "Válido apenas para primeiro pedido. Desconto aplicado automaticamente no carrinho.",
+    "companyInfo": {
+      "website": "https://soudaki.com.br",
+      "founded": "2019",
+      "description": "Plataforma de delivery que conecta consumidores a restaurantes e estabelecimentos locais, oferecendo conveniência e variedade gastronômica."
+    }
   },
   {
     "id": "insider",
@@ -80,7 +107,16 @@
     "logo": "insider.png",
     "discount": "R$30 OFF em compras acima de R$150",
     "couponCode": "",
-    "link": "https://www.insiderstore.com.br/a/rewards/r/rx1mc3Fv"
+    "link": "https://www.insiderstore.com.br/a/rewards/r/rx1mc3Fv",
+    "description": "Insider é uma loja online especializada em produtos de tecnologia, eletrônicos e acessórios com preços competitivos e entrega rápida.",
+    "category": "Tecnologia",
+    "validUntil": "31/12/2025",
+    "terms": "Válido para compras acima de R$150. Desconto aplicado automaticamente no carrinho.",
+    "companyInfo": {
+      "website": "https://www.insiderstore.com.br",
+      "founded": "2017",
+      "description": "Loja online especializada em produtos de tecnologia e eletrônicos, oferecendo preços competitivos e produtos de qualidade."
+    }
   },
   {
     "id": "ze-delivery",
@@ -88,7 +124,16 @@
     "logo": "ze.png",
     "discount": "Cupom de R$10 na primeira compra",
     "couponCode": "MAPUPPJYG",
-    "link": "https://ze.sng.link/Dm9m7/5q7i/r_07d9c4b7a3"
+    "link": "https://ze.sng.link/Dm9m7/5q7i/r_07d9c4b7a3",
+    "description": "Zé Delivery é uma plataforma de delivery de bebidas que conecta consumidores a bares, restaurantes e mercados locais com entrega rápida.",
+    "category": "Delivery",
+    "validUntil": "31/12/2025",
+    "terms": "Válido apenas para primeira compra. Desconto aplicado automaticamente no carrinho.",
+    "companyInfo": {
+      "website": "https://zedelivery.com.br",
+      "founded": "2015",
+      "description": "Plataforma de delivery especializada em bebidas, conectando consumidores a bares, restaurantes e mercados locais com entrega rápida e conveniência."
+    }
   },
   {
     "id": "zee-now",
@@ -96,7 +141,16 @@
     "logo": "zee-now.png",
     "discount": "ganhe R$25 de desconto",
     "couponCode": "JJOASW",
-    "link": "https://zeenow.app.link/FFtaECeYh4"
+    "link": "https://zeenow.app.link/FFtaECeYh4",
+    "description": "Zee.now é uma plataforma de delivery que oferece produtos diversos com entrega rápida e preços competitivos.",
+    "category": "Delivery",
+    "validUntil": "31/12/2025",
+    "terms": "Válido para primeira compra. Desconto aplicado automaticamente no carrinho.",
+    "companyInfo": {
+      "website": "https://zeenow.com.br",
+      "founded": "2020",
+      "description": "Plataforma de delivery que oferece produtos diversos com foco em conveniência, preços competitivos e entrega rápida."
+    }
   },
   {
     "id": "zee-dog",
@@ -104,7 +158,16 @@
     "logo": "zee-dog.png",
     "discount": "15% de desconto para os amigos desavisados que nunca compraram na Zee.Dog",
     "couponCode": "",
-    "link": "http://zeedog.refr.cc/matheusnunespuppe"
+    "link": "http://zeedog.refr.cc/matheusnunespuppe",
+    "description": "Zee.Dog é uma marca especializada em produtos para pets, oferecendo roupas, acessórios e brinquedos com design único e qualidade premium.",
+    "category": "Pet Shop",
+    "validUntil": "31/12/2025",
+    "terms": "Válido apenas para primeira compra. Desconto aplicado automaticamente no carrinho.",
+    "companyInfo": {
+      "website": "https://zeedog.com.br",
+      "founded": "2010",
+      "description": "Marca brasileira especializada em produtos para pets com design único, oferecendo roupas, acessórios e brinquedos de qualidade premium."
+    }
   },
   {
     "id": "petlove-plano",
@@ -112,7 +175,16 @@
     "logo": "petlove-plano.png",
     "discount": "20% OFF na 1ª mensalidade dos Planos de Saúde",
     "couponCode": "",
-    "link": "https://saude.petlove.com.br/indicacao/laxi9ghpmmofhqew"
+    "link": "https://saude.petlove.com.br/indicacao/laxi9ghpmmofhqew",
+    "description": "Petlove Saúde oferece planos de saúde veterinária para pets, garantindo cuidados médicos de qualidade com preços acessíveis.",
+    "category": "Pet Shop",
+    "validUntil": "31/12/2025",
+    "terms": "Válido apenas para primeira mensalidade. Não cumulativo com outras promoções.",
+    "companyInfo": {
+      "website": "https://saude.petlove.com.br",
+      "founded": "2018",
+      "description": "Divisão da Petlove especializada em planos de saúde veterinária, oferecendo cobertura médica completa para pets com preços acessíveis."
+    }
   },
   {
     "id": "recarga-pay",
@@ -120,7 +192,16 @@
     "logo": "recarga-pay.png",
     "discount": "Para ganhar R$20. É só baixar o App e fazer sua 1ª compra em Pix com qualquer cartão em até 12x",
     "couponCode": "matpup024",
-    "link": "http://recargapay.com.br/r/matpup024-lO"
+    "link": "http://recargapay.com.br/r/matpup024-lO",
+    "description": "RecargaPay é uma fintech que oferece soluções de pagamento digital, incluindo recarga de celular, pagamentos via PIX e parcelamento de compras.",
+    "category": "Fintech",
+    "validUntil": "31/12/2025",
+    "terms": "Válido para primeira compra via PIX. Bônus creditado após confirmação da transação.",
+    "companyInfo": {
+      "website": "https://recargapay.com.br",
+      "founded": "2016",
+      "description": "Fintech brasileira que oferece soluções de pagamento digital, incluindo recarga de celular, pagamentos via PIX e parcelamento de compras com cartão."
+    }
   },
   {
     "id": "99-viagem",
@@ -128,7 +209,16 @@
     "logo": "99-viagem.png",
     "discount": "Desconto primeira viagem",
     "couponCode": "",
-    "link": "https://d.99app.com/RUdWne2"
+    "link": "https://d.99app.com/RUdWne2",
+    "description": "99 é uma plataforma de mobilidade urbana que conecta passageiros a motoristas particulares, oferecendo viagens seguras e convenientes.",
+    "category": "Mobilidade",
+    "validUntil": "31/12/2025",
+    "terms": "Válido apenas para primeira viagem. Desconto aplicado automaticamente no app.",
+    "companyInfo": {
+      "website": "https://99app.com",
+      "founded": "2012",
+      "description": "Plataforma de mobilidade urbana que conecta passageiros a motoristas particulares, oferecendo viagens seguras, convenientes e acessíveis."
+    }
   },
   {
     "id": "uber",
@@ -136,7 +226,16 @@
     "logo": "uber.png",
     "discount": "Economizar BRL25 nas 5 primeiras viagens.",
     "couponCode": "x9aqpdda6pkz",
-    "link": "https://referrals.uber.com/refer?id=x9aqpdda6pkz"
+    "link": "https://referrals.uber.com/refer?id=x9aqpdda6pkz",
+    "description": "Uber é uma plataforma global de mobilidade urbana que conecta passageiros a motoristas particulares, oferecendo viagens seguras e convenientes.",
+    "category": "Mobilidade",
+    "validUntil": "31/12/2025",
+    "terms": "Válido para as 5 primeiras viagens. Desconto aplicado automaticamente no app.",
+    "companyInfo": {
+      "website": "https://uber.com.br",
+      "founded": "2009",
+      "description": "Plataforma global de mobilidade urbana que revolucionou o transporte, conectando passageiros a motoristas particulares com tecnologia e conveniência."
+    }
   },
   {
     "id": "99-motorista",
@@ -144,7 +243,16 @@
     "logo": "99-motorista.png",
     "discount": "Você foi convidado para ser motorista parceiro 99!",
     "couponCode": "",
-    "link": "https://d.99app.com/e1ByJVE"
+    "link": "https://d.99app.com/e1ByJVE",
+    "description": "Torne-se um motorista parceiro da 99 e tenha flexibilidade de horários, ganhos extras e a oportunidade de fazer parte da maior plataforma de mobilidade do Brasil.",
+    "category": "Mobilidade",
+    "validUntil": "31/12/2025",
+    "terms": "Convite válido para novos motoristas. Condições aplicáveis conforme política da empresa.",
+    "companyInfo": {
+      "website": "https://motorista.99app.com",
+      "founded": "2012",
+      "description": "Programa de motoristas parceiros da 99, oferecendo flexibilidade de horários, ganhos extras e oportunidade de renda complementar."
+    }
   },
   {
     "id": "woba",
@@ -152,6 +260,15 @@
     "logo": "woba.png",
     "discount": "Você ganhou reserva grátis em qualquer espaço de coworking",
     "couponCode": "",
-    "link": "https://bnc.lt/woba-referral?rid=r43533"
+    "link": "https://bnc.lt/woba-referral?rid=r43533",
+    "description": "Woba é uma plataforma que conecta profissionais a espaços de coworking, oferecendo flexibilidade e produtividade para trabalho remoto e híbrido.",
+    "category": "Coworking",
+    "validUntil": "31/12/2025",
+    "terms": "Válido para primeira reserva. Sujeito à disponibilidade dos espaços.",
+    "companyInfo": {
+      "website": "https://woba.com.br",
+      "founded": "2019",
+      "description": "Plataforma que conecta profissionais a espaços de coworking, oferecendo flexibilidade, produtividade e networking para trabalho remoto e híbrido."
+    }
   }
 ]
