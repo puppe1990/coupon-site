@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Copy, Check, ExternalLink, Search, Tag, Clock, Shield, Star, Users, Zap, Gift, AlertCircle, CheckCircle, Info } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from './ui/alert';
+import { ArrowLeft, Copy, ExternalLink, Search, Tag, Clock, Shield, Zap, Gift, CheckCircle, Info } from 'lucide-react';
 import { Button } from './ui/button';
 
 const HowToUsePage = () => {

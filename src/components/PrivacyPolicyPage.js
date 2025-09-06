@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Shield, Eye, Lock, Database, Users, Mail, Phone, MapPin, AlertCircle, CheckCircle, Info, Globe, FileText, Settings } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from './ui/alert';
+import { ArrowLeft, Shield, Eye, Lock, Database, Users, Mail, Phone, MapPin, AlertCircle, CheckCircle, Globe, FileText, Settings } from 'lucide-react';
 import { Button } from './ui/button';
 
 const PrivacyPolicyPage = () => {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, FileText, Shield, AlertCircle, CheckCircle, Info, Users, Lock, Globe, Mail, Phone, MapPin } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from './ui/alert';
 import { Button } from './ui/button';
 
 const TermsOfUsePage = () => {
