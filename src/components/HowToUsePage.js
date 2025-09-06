@@ -283,7 +283,7 @@ const HowToUsePage = () => {
               <h4 className="text-xl font-semibold mb-4">Links Úteis</h4>
               <ul className="space-y-2 text-gray-300">
                 <li><button className="hover:text-white transition-colors duration-300 text-left">Como usar cupons</button></li>
-                <li><button className="hover:text-white transition-colors duration-300 text-left">Termos de uso</button></li>
+                <li><button onClick={() => navigate('/termos-de-uso')} className="hover:text-white transition-colors duration-300 text-left">Termos de uso</button></li>
                 <li><button className="hover:text-white transition-colors duration-300 text-left">Política de privacidade</button></li>
                 <li><button className="hover:text-white transition-colors duration-300 text-left">Contato</button></li>
               </ul>
