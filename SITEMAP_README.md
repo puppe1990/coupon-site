@@ -77,7 +77,7 @@ The generated sitemap includes:
 ## Production Deployment
 
 For production, the sitemap will be available at:
-- `https://your-domain.com/sitemap.xml`
+- `https://www.cupomvantagens.com.br/sitemap.xml`
 
 Make sure to:
 1. Update the domain in all configuration files
