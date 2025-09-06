@@ -270,5 +270,22 @@
       "founded": "2019",
       "description": "Plataforma que conecta profissionais a espaços de coworking, oferecendo flexibilidade, produtividade e networking para trabalho remoto e híbrido."
     }
+  },
+  {
+    "id": "hostinger",
+    "name": "Cupom Hostinger",
+    "logo": "hostinger.png",
+    "discount": "20% de desconto extra + domínio grátis",
+    "couponCode": "JDMMATHEUVZO",
+    "link": "https://hostinger.com?REFERRALCODE=JDMMATHEUVZO",
+    "description": "Hostinger é uma das principais provedoras de hospedagem web do mundo, oferecendo serviços de hospedagem confiáveis, rápidos e acessíveis para sites WordPress, e-commerce e muito mais.",
+    "category": "Hospedagem",
+    "validUntil": "31/12/2025",
+    "terms": "Desconto aplicado automaticamente no checkout. Domínio grátis incluído em planos anuais. Não cumulativo com outras promoções.",
+    "companyInfo": {
+      "website": "https://hostinger.com",
+      "founded": "2004",
+      "description": "Provedora global de hospedagem web que oferece serviços de hospedagem compartilhada, VPS, cloud hosting e domínios com foco em performance, segurança e facilidade de uso."
+    }
   }
 ]
