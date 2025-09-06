@@ -1,26 +1,57 @@
 [
   {
+    "id": "yuool",
     "name": "Cupom Yuool",
     "logo": "yuool.png",
     "discount": "15% de desconto Primeira Compra",
     "couponCode": "AFA355FFAE",
-    "link": "https://www.yuool.com.br/?referrer_token=eRapyM"
+    "link": "https://www.yuool.com.br/?referrer_token=eRapyM",
+    "description": "Yuool é uma plataforma de compras online que oferece produtos com preços competitivos e entrega rápida. Com o cupom de primeira compra, você pode economizar 15% em sua primeira experiência de compra.",
+    "category": "E-commerce",
+    "validUntil": "31/12/2024",
+    "terms": "Válido apenas para primeira compra. Não cumulativo com outras promoções.",
+    "companyInfo": {
+      "website": "https://www.yuool.com.br",
+      "founded": "2020",
+      "description": "Plataforma de e-commerce focada em oferecer produtos de qualidade com preços acessíveis e excelente experiência do cliente."
+    }
   },
   {
+    "id": "mercado-diferente",
     "name": "Cupom Mercado Diferente",
     "logo": "mercado_diferente.png",
     "discount": "15% de desconto Primeira Compra na primeira cesta",
     "couponCode": "",
-    "link": "https://mercdif.me/matheus-nunes-puppe"
+    "link": "https://mercdif.me/matheus-nunes-puppe",
+    "description": "Mercado Diferente é uma plataforma de delivery de supermercado que oferece produtos frescos e de qualidade com entrega rápida. Economize 15% na sua primeira cesta de compras.",
+    "category": "Delivery",
+    "validUntil": "31/12/2024",
+    "terms": "Válido apenas para primeira compra. Desconto aplicado automaticamente no carrinho.",
+    "companyInfo": {
+      "website": "https://mercdif.me",
+      "founded": "2019",
+      "description": "Plataforma de delivery de supermercado que conecta consumidores a estabelecimentos locais, oferecendo conveniência e produtos frescos."
+    }
   },
   {
+    "id": "facio",
     "name": "Facio",
     "logo": "facio.png",
     "discount": "Antecipe o seu salário com a Facio",
     "couponCode": "",
-    "link": "https://facio.com.br?amigo=ff3b7184-c94a-426c-9d73-a3838f27b050&utm_source=web"
+    "link": "https://facio.com.br?amigo=ff3b7184-c94a-426c-9d73-a3838f27b050&utm_source=web",
+    "description": "Facio é uma fintech que permite antecipar seu salário de forma rápida e segura. Tenha acesso ao seu dinheiro quando precisar, sem burocracias.",
+    "category": "Fintech",
+    "validUntil": "31/12/2024",
+    "terms": "Serviço disponível para funcionários de empresas parceiras. Taxas aplicáveis conforme política da empresa.",
+    "companyInfo": {
+      "website": "https://facio.com.br",
+      "founded": "2021",
+      "description": "Fintech brasileira que revoluciona o acesso ao salário, permitindo que funcionários antecipem parte de seus vencimentos de forma rápida e segura."
+    }
   },
   {
+    "id": "trela",
     "name": "Cupom Trela",
     "logo": "trela.png",
     "discount": "Use meu código de desconto para ganhar 25% OFF na sua primeira compra!",
@@ -28,6 +59,7 @@
     "link": "https://trela.com.br/emporio/1?programamgm"
   },
   {
+    "id": "petlove",
     "name": "Cupom Petlove",
     "logo": "petlove.png",
     "discount": "Ganhe R$20 em compras acima de R$100 na primeira compra",
@@ -35,6 +67,7 @@
     "link": "https://www.petlove.com.br/?coupon=@MAT417915"
   },
   {
+    "id": "daki",
     "name": "Cupom Daki",
     "logo": "daki.png",
     "discount": "R$50 desconto primeiro pedido",
@@ -42,6 +75,7 @@
     "link": "https://soudaki.onelink.me/FYIE/3nrc647q?deep_link_value=referalCode%2FTVA3MzkwMjg%3D"
   },
   {
+    "id": "insider",
     "name": "Cupom Insider",
     "logo": "insider.png",
     "discount": "R$30 OFF em compras acima de R$150",
@@ -49,6 +83,7 @@
     "link": "https://www.insiderstore.com.br/a/rewards/r/rx1mc3Fv"
   },
   {
+    "id": "ze-delivery",
     "name": "Cupom Zé Delivery",
     "logo": "ze.png",
     "discount": "Cupom de R$10 na primeira compra",
@@ -56,6 +91,7 @@
     "link": "https://ze.sng.link/Dm9m7/5q7i/r_07d9c4b7a3"
   },
   {
+    "id": "zee-now",
     "name": "Cupom Zee.now",
     "logo": "zee-now.png",
     "discount": "ganhe R$25 de desconto",
@@ -63,6 +99,7 @@
     "link": "https://zeenow.app.link/FFtaECeYh4"
   },
   {
+    "id": "zee-dog",
     "name": "Cupom Zee Dog",
     "logo": "zee-dog.png",
     "discount": "15% de desconto para os amigos desavisados que nunca compraram na Zee.Dog",
@@ -70,6 +107,7 @@
     "link": "http://zeedog.refr.cc/matheusnunespuppe"
   },
   {
+    "id": "petlove-plano",
     "name": "Cupom Petlove Plano de saúde",
     "logo": "petlove-plano.png",
     "discount": "20% OFF na 1ª mensalidade dos Planos de Saúde",
@@ -77,6 +115,7 @@
     "link": "https://saude.petlove.com.br/indicacao/laxi9ghpmmofhqew"
   },
   {
+    "id": "recarga-pay",
     "name": "Cupom Recarga Pay",
     "logo": "recarga-pay.png",
     "discount": "Para ganhar R$20. É só baixar o App e fazer sua 1ª compra em Pix com qualquer cartão em até 12x",
@@ -84,6 +123,7 @@
     "link": "http://recargapay.com.br/r/matpup024-lO"
   },
   {
+    "id": "99-viagem",
     "name": "Cupom 99",
     "logo": "99-viagem.png",
     "discount": "Desconto primeira viagem",
@@ -91,6 +131,7 @@
     "link": "https://d.99app.com/RUdWne2"
   },
   {
+    "id": "uber",
     "name": "Cupom Uber",
     "logo": "uber.png",
     "discount": "Economizar BRL25 nas 5 primeiras viagens.",
@@ -98,6 +139,7 @@
     "link": "https://referrals.uber.com/refer?id=x9aqpdda6pkz"
   },
   {
+    "id": "99-motorista",
     "name": "Convite 99 motorista",
     "logo": "99-motorista.png",
     "discount": "Você foi convidado para ser motorista parceiro 99!",
@@ -105,6 +147,7 @@
     "link": "https://d.99app.com/e1ByJVE"
   },
   {
+    "id": "woba",
     "name": "Diária Woba",
     "logo": "woba.png",
     "discount": "Você ganhou reserva grátis em qualquer espaço de coworking",
