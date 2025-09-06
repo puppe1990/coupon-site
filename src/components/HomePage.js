@@ -252,10 +252,10 @@ const HomePage = () => {
             <div className="text-center">
               <h4 className="text-xl font-semibold mb-4">Links Úteis</h4>
               <ul className="space-y-2 text-gray-300">
-                <li><a href="#" className="hover:text-white transition-colors duration-300">Como usar cupons</a></li>
-                <li><a href="#" className="hover:text-white transition-colors duration-300">Termos de uso</a></li>
-                <li><a href="#" className="hover:text-white transition-colors duration-300">Política de privacidade</a></li>
-                <li><a href="#" className="hover:text-white transition-colors duration-300">Contato</a></li>
+                <li><button className="hover:text-white transition-colors duration-300 text-left">Como usar cupons</button></li>
+                <li><button className="hover:text-white transition-colors duration-300 text-left">Termos de uso</button></li>
+                <li><button className="hover:text-white transition-colors duration-300 text-left">Política de privacidade</button></li>
+                <li><button className="hover:text-white transition-colors duration-300 text-left">Contato</button></li>
               </ul>
             </div>
             
@@ -279,7 +279,7 @@ const HomePage = () => {
           
           <div className="border-t border-white/20 pt-8 text-center">
             <p className="text-gray-400">
-              © 2024 Cupom Vantagens. Todos os direitos reservados.
+              © {new Date().getFullYear()} Cupom Vantagens. Todos os direitos reservados.
             </p>
           </div>
         </div>
