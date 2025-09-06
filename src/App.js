@@ -6,6 +6,7 @@ import HowToUsePage from './components/HowToUsePage';
 import TermsOfUsePage from './components/TermsOfUsePage';
 import PrivacyPolicyPage from './components/PrivacyPolicyPage';
 import ContatoPage from './components/ContatoPage';
+import SobreNosPage from './components/SobreNosPage';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/termos-de-uso" element={<TermsOfUsePage />} />
         <Route path="/politica-de-privacidade" element={<PrivacyPolicyPage />} />
         <Route path="/contato" element={<ContatoPage />} />
+        <Route path="/sobre-nos" element={<SobreNosPage />} />
       </Routes>
     </Router>
   );
