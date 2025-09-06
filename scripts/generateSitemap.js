@@ -6,7 +6,7 @@ const companies = JSON.parse(fs.readFileSync(path.join(__dirname, '../src/compan
 
 const generateSitemap = () => {
   try {
-    const hostname = 'https://your-domain.com'; // Replace with your actual domain
+    const hostname = 'https://cupomvantagens.com.br'; // Production domain
     const staticPages = [
       {
         url: '/',

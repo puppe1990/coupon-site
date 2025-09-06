@@ -1,7 +1,7 @@
 import companies from '../companies.json';
 
 // Browser-compatible sitemap generator
-export const generateBrowserSitemap = (hostname = 'https://your-domain.com') => {
+export const generateBrowserSitemap = (hostname = 'https://cupomvantagens.com.br') => {
   const staticPages = [
     {
       url: '/',
