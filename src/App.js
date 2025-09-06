@@ -7,6 +7,7 @@ import TermsOfUsePage from './components/TermsOfUsePage';
 import PrivacyPolicyPage from './components/PrivacyPolicyPage';
 import ContatoPage from './components/ContatoPage';
 import SobreNosPage from './components/SobreNosPage';
+import SitemapPage from './components/SitemapPage';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/politica-de-privacidade" element={<PrivacyPolicyPage />} />
         <Route path="/contato" element={<ContatoPage />} />
         <Route path="/sobre-nos" element={<SobreNosPage />} />
+        <Route path="/sitemap.xml" element={<SitemapPage />} />
       </Routes>
     </Router>
   );
