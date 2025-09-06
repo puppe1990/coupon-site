@@ -5,6 +5,7 @@ import CouponPage from './components/CouponPage';
 import HowToUsePage from './components/HowToUsePage';
 import TermsOfUsePage from './components/TermsOfUsePage';
 import PrivacyPolicyPage from './components/PrivacyPolicyPage';
+import ContatoPage from './components/ContatoPage';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/como-usar-cupons" element={<HowToUsePage />} />
         <Route path="/termos-de-uso" element={<TermsOfUsePage />} />
         <Route path="/politica-de-privacidade" element={<PrivacyPolicyPage />} />
+        <Route path="/contato" element={<ContatoPage />} />
       </Routes>
     </Router>
   );

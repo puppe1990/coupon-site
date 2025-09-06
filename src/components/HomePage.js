@@ -255,7 +255,7 @@ const HomePage = () => {
                 <li><button onClick={() => navigate('/como-usar-cupons')} className="hover:text-white transition-colors duration-300 text-left">Como usar cupons</button></li>
                 <li><button onClick={() => navigate('/termos-de-uso')} className="hover:text-white transition-colors duration-300 text-left">Termos de uso</button></li>
                 <li><button onClick={() => navigate('/politica-de-privacidade')} className="hover:text-white transition-colors duration-300 text-left">Política de privacidade</button></li>
-                <li><button className="hover:text-white transition-colors duration-300 text-left">Contato</button></li>
+                <li><button onClick={() => navigate('/contato')} className="hover:text-white transition-colors duration-300 text-left">Contato</button></li>
               </ul>
             </div>
             
