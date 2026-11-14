@@ -1,290 +1,281 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, Copy, X, Check } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from './ui/alert';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogClose } from './ui/dialog';
-import { Input } from './ui/input';
+import { ArrowUpRight, Check, Copy, Search, X } from 'lucide-react';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './ui/dialog';
 import { Button } from './ui/button';
-import companiesData from '../companies.json';
+import SiteFooter from './SiteFooter';
+import { companies, categoryColor, displayName } from '../lib/companies';
 
 const HomePage = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCompany, setSelectedCompany] = useState(null);
-  const [copied, setCopied] = useState(false);
+  const [copiedCode, setCopiedCode] = useState('');
 
-  const companies = companiesData.map(company => ({
-    ...company,
-    logo: company.logo.startsWith('http') ? company.logo : require(`../images/${company.logo}`)
-  }));
-
+  const term = searchTerm.trim().toLowerCase();
   const filteredCompanies = companies.filter((company) =>
-    company.name.toLowerCase().includes(searchTerm.toLowerCase())
+    company.name.toLowerCase().includes(term)
   );
+  const featured = companies.find((company) => company.couponCode) || companies[0];
 
-  const handleCopy = async (text) => {
+  const countLabel = filteredCompanies.length === companies.length
+    ? `${companies.length} cupons`
+    : `${filteredCompanies.length} de ${companies.length} cupons`;
+
+  const handleCopy = async (code) => {
     try {
-      await navigator.clipboard.writeText(text);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      await navigator.clipboard.writeText(code);
+      setCopiedCode(code);
+      setTimeout(() => setCopiedCode(''), 2000);
     } catch (err) {
-      console.error('Failed to copy text: ', err);
+      console.error('Falha ao copiar o código: ', err);
     }
   };
 
-  const handleViewCoupon = (company) => {
-    navigate(`/coupon/${company.id}`);
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 text-foreground">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float" style={{animationDelay: '2s'}}></div>
-        <div className="absolute top-40 left-1/2 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float" style={{animationDelay: '4s'}}></div>
-      </div>
-
-      <header className="relative bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 text-white py-16 shadow-2xl">
-        <div className="container mx-auto text-center px-4">
-          <div className="animate-pulse-slow">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gradient bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
-              Cupom Vantagens
-            </h1>
-            <p className="text-lg md:text-2xl mb-8 text-blue-100 font-light">
-              Seu destino para economizar com cupons de desconto
-            </p>
-          </div>
-          
-          <div className="max-w-lg mx-auto">
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-              <div className="relative">
-                <Input
-                  type="text"
-                  placeholder="Pesquisar empresa com cupom"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full py-4 pl-12 pr-6 text-foreground bg-white/95 backdrop-blur-sm rounded-full focus:outline-none focus:ring-4 focus:ring-white/50 shadow-xl border-0 text-lg placeholder:text-gray-500"
-                />
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-6 h-6" />
-              </div>
-            </div>
-          </div>
+    <div className="min-h-screen bg-paper">
+      <header className="border-b border-hairline">
+        <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-6">
+          <button
+            onClick={() => navigate('/')}
+            className="whitespace-nowrap text-[17px] font-semibold tracking-[-0.01em]"
+          >
+            Cupom Vantagens
+          </button>
+          <nav className="hidden items-center gap-6 text-sm text-ink-secondary sm:flex">
+            <button
+              onClick={() => navigate('/como-usar-cupons')}
+              className="transition-colors hover:text-ink"
+            >
+              Como usar cupons
+            </button>
+            <button
+              onClick={() => navigate('/contato')}
+              className="transition-colors hover:text-ink"
+            >
+              Contato
+            </button>
+          </nav>
         </div>
       </header>
 
-      <main className="relative container mx-auto py-12 px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">
-            {filteredCompanies.length} Cupons Disponíveis
-          </h2>
-          <p className="text-xl text-gray-600">
-            Economize com os melhores descontos
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {filteredCompanies.map((company, index) => (
-            <div 
-              key={company.name} 
-              className="group bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden card-hover border border-white/20"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="relative overflow-hidden">
-                <img 
-                  src={company.logo} 
-                  alt={company.name} 
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
-                  Desconto
-                </div>
-              </div>
-              
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-purple-600 transition-colors duration-300">
-                  {company.name}
-                </h3>
-                <p className="text-gray-600 mb-6 line-clamp-2 leading-relaxed">
-                  {company.discount}
-                </p>
-                
-                <div className="space-y-2">
-                  <Button
-                    onClick={() => handleViewCoupon(company)}
-                    variant="gradient"
-                    size="lg"
-                    className="w-full font-semibold text-lg py-3"
-                  >
-                    Ver Detalhes
-                  </Button>
-                  <Button
-                    onClick={() => setSelectedCompany(company)}
-                    variant="outline"
-                    size="lg"
-                    className="w-full font-semibold text-lg py-3 border-purple-300 text-purple-700 hover:bg-purple-50"
-                  >
-                    Ver Cupom
-                  </Button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        {filteredCompanies.length === 0 && (
-          <div className="text-center py-16">
-            <div className="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
-              <Search className="w-12 h-12 text-gray-400" />
-            </div>
-            <h3 className="text-2xl font-semibold text-gray-600 mb-2">
-              Nenhum cupom encontrado
-            </h3>
-            <p className="text-gray-500">
-              Tente pesquisar com outros termos
-            </p>
-          </div>
-        )}
-      </main>
+      <main>
+        <section className="mx-auto max-w-[1200px] px-6 pb-16 pt-20 lg:pt-24">
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_360px]">
+            <div>
+              <h1 className="max-w-[42rem] text-[34px] font-medium leading-[1.08] tracking-[-0.02em] sm:text-[44px] lg:text-[52px]">
+                Códigos de indicação para a primeira compra
+              </h1>
+              <p className="mt-5 max-w-[34rem] text-base leading-7 text-ink-secondary sm:text-lg sm:leading-8">
+                Descontos de apps e lojas brasileiras. Copie o código e use no site da marca.
+              </p>
 
-      <Dialog open={selectedCompany !== null} onOpenChange={() => setSelectedCompany(null)}>
-        <DialogContent className="bg-white/95 backdrop-blur-sm border-0 shadow-2xl max-w-2xl">
-          <DialogHeader className="text-center pb-6">
-            <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden shadow-lg">
-              <img 
-                src={selectedCompany?.logo} 
-                alt={selectedCompany?.name} 
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <DialogTitle className="text-3xl font-bold text-gray-800 mb-2">
-              {selectedCompany?.name}
-            </DialogTitle>
-            <DialogDescription className="text-lg text-gray-600 leading-relaxed">
-              {selectedCompany?.discount}
-            </DialogDescription>
-          </DialogHeader>
-          
-          <div className="space-y-6">
-            {selectedCompany?.couponCode && (
-              <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200">
-                <div className="text-center mb-4">
-                  <h3 className="text-xl font-bold text-green-800 mb-2">Código do Cupom</h3>
-                  <p className="text-green-600">Copie o código abaixo e use no site</p>
-                </div>
-                
-                <div className="flex items-center space-x-3 mb-4">
-                  <Input 
-                    value={selectedCompany.couponCode} 
-                    readOnly 
-                    className="flex-grow bg-white border-2 border-green-300 text-center text-2xl font-bold text-green-800 py-4 rounded-xl" 
-                  />
-                  <Button 
-                    onClick={() => handleCopy(selectedCompany.couponCode)} 
-                    variant="success"
-                    size="lg"
-                    className="px-6 py-4 text-lg font-bold"
+              <div className="relative mt-8 w-full max-w-[380px]">
+                <Search
+                  className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted"
+                  strokeWidth={1.5}
+                />
+                <input
+                  type="search"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Buscar empresa"
+                  aria-label="Buscar empresa"
+                  className="h-11 w-full rounded-md border border-hairline bg-surface pl-9 pr-9 text-[15px] text-ink transition-colors placeholder:text-ink-muted focus:border-brand"
+                />
+                {searchTerm && (
+                  <button
+                    onClick={() => setSearchTerm('')}
+                    aria-label="Limpar busca"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 rounded-sm p-1 text-ink-muted transition-colors hover:text-ink"
                   >
-                    {copied ? <Check size={20} className="mr-2" /> : <Copy size={20} className="mr-2" />}
-                    {copied ? 'Copiado!' : 'Copiar'}
-                  </Button>
+                    <X className="h-4 w-4" strokeWidth={1.5} />
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {featured && (
+              <div className="ticket w-full max-w-[360px] lg:justify-self-end">
+                <div className="p-6">
+                  <p className="text-xs text-ink-muted">Código de indicação</p>
+                  <p className="mt-3 text-[24px] font-medium leading-[1.25] tracking-[-0.01em]">
+                    {featured.discount}
+                  </p>
+                  <p className="mt-2 text-sm text-ink-secondary">{displayName(featured.name)}</p>
                 </div>
-                
-                {copied && (
-                  <Alert className="bg-green-100 border-green-300 text-green-800 rounded-xl">
-                    <AlertTitle className="font-bold">Sucesso!</AlertTitle>
-                    <AlertDescription>Código copiado para a área de transferência.</AlertDescription>
-                  </Alert>
+                {featured.couponCode && (
+                  <div className="ticket-perforation ticket-stub">
+                    <span className="ticket-notch ticket-notch-left" />
+                    <span className="ticket-notch ticket-notch-right" />
+                    <div className="flex items-center justify-between gap-4 p-4 pl-5">
+                      <span className="code text-sm font-medium tracking-[0.08em] text-white">
+                        {featured.couponCode}
+                      </span>
+                      <Button
+                        size="sm"
+                        variant="inverse"
+                        onClick={() => handleCopy(featured.couponCode)}
+                      >
+                        {copiedCode === featured.couponCode ? (
+                          <>
+                            <Check className="h-4 w-4" strokeWidth={1.5} />
+                            Copiado
+                          </>
+                        ) : (
+                          <>
+                            <Copy className="h-4 w-4" strokeWidth={1.5} />
+                            Copiar
+                          </>
+                        )}
+                      </Button>
+                    </div>
+                  </div>
                 )}
               </div>
             )}
-            
-            {selectedCompany?.link && (
-              <div className="text-center">
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-[1200px] px-6 pb-24">
+          <div className="border-t border-hairline pt-6">
+            <p className="code figure text-xs text-ink-muted">{countLabel}</p>
+          </div>
+
+          <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredCompanies.map((company) => (
+              <article
+                key={company.id}
+                className="group flex flex-col overflow-hidden rounded-xl border border-hairline bg-surface transition-colors duration-150 hover:border-brand/30"
+              >
+                <div className="aspect-[16/10] overflow-hidden border-b border-hairline bg-raised">
+                  <img
+                    src={company.logo}
+                    alt={`Prévia do site ${displayName(company.name)}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-top"
+                  />
+                </div>
+
+                <div className="flex flex-1 flex-col p-5">
+                  <p className="flex items-center gap-2 text-xs text-ink-muted">
+                    <span
+                      className="h-1.5 w-1.5 rounded-full"
+                      style={{ backgroundColor: categoryColor(company.category) }}
+                    />
+                    {company.category}
+                  </p>
+                  <h2 className="mt-1 text-[15px] font-medium leading-6">
+                    <button
+                      onClick={() => navigate(`/coupon/${company.id}`)}
+                      className="text-left underline-offset-4 decoration-hairline hover:underline"
+                    >
+                      {displayName(company.name)}
+                    </button>
+                  </h2>
+                  <p className="mt-1 line-clamp-2 text-sm leading-5 text-ink-secondary">
+                    {company.discount}
+                  </p>
+
+                  <div className="mt-auto flex items-center justify-between gap-3 border-t border-hairline pt-4">
+                    {company.couponCode ? (
+                      <button
+                        onClick={() => handleCopy(company.couponCode)}
+                        aria-label={`Copiar código ${company.couponCode}`}
+                        className="code flex items-center gap-2 rounded-sm bg-raised px-2 py-1.5 text-xs text-ink transition-colors hover:bg-raised-hover"
+                      >
+                        {company.couponCode}
+                        {copiedCode === company.couponCode ? (
+                          <Check className="h-4 w-4 text-brand" strokeWidth={1.5} />
+                        ) : (
+                          <Copy className="h-4 w-4 text-ink-muted" strokeWidth={1.5} />
+                        )}
+                      </button>
+                    ) : (
+                      <span className="text-xs text-ink-muted">Aplicado pelo link</span>
+                    )}
+                    <button
+                      onClick={() => setSelectedCompany(company)}
+                      className="inline-flex items-center gap-1 text-sm font-medium text-brand transition-colors hover:text-brand-hover"
+                    >
+                      Ver cupom
+                      <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
+                    </button>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {filteredCompanies.length === 0 && (
+            <div className="mt-8 rounded-xl border border-dashed border-hairline bg-surface px-6 py-16 text-center">
+              <Search className="mx-auto h-4 w-4 text-ink-muted" strokeWidth={1.5} />
+              <p className="mt-4 text-sm font-medium">Nenhum cupom para “{searchTerm.trim()}”</p>
+              <p className="mt-1 text-sm text-ink-secondary">Tente outra empresa ou limpe a busca.</p>
+              <Button variant="secondary" className="mt-6" onClick={() => setSearchTerm('')}>
+                Limpar busca
+              </Button>
+            </div>
+          )}
+        </section>
+      </main>
+
+      <SiteFooter />
+
+      <Dialog open={selectedCompany !== null} onOpenChange={(open) => !open && setSelectedCompany(null)}>
+        <DialogContent className="max-w-[440px]">
+          {selectedCompany && (
+            <>
+              <DialogHeader>
+                <DialogTitle>{displayName(selectedCompany.name)}</DialogTitle>
+                <DialogDescription>{selectedCompany.discount}</DialogDescription>
+              </DialogHeader>
+
+              {selectedCompany.couponCode && (
+                <div className="mt-6">
+                  <p className="text-xs text-ink-muted">Código do cupom</p>
+                  <div className="mt-2 flex items-center justify-between gap-3 rounded-md bg-brand px-4 py-3">
+                    <span className="code text-base font-medium tracking-[0.08em] text-white">
+                      {selectedCompany.couponCode}
+                    </span>
+                    <Button
+                      size="sm"
+                      variant="inverse"
+                      onClick={() => handleCopy(selectedCompany.couponCode)}
+                    >
+                      {copiedCode === selectedCompany.couponCode ? (
+                        <>
+                          <Check className="h-4 w-4" strokeWidth={1.5} />
+                          Copiado
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="h-4 w-4" strokeWidth={1.5} />
+                          Copiar
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                </div>
+              )}
+
+              {selectedCompany.link && (
                 <Button
                   asChild
-                  variant="gradient"
                   size="lg"
-                  className="w-full py-4 text-xl font-bold"
+                  variant={selectedCompany.couponCode ? 'secondary' : 'primary'}
+                  className="mt-6 w-full"
                 >
-                  <a
-                    href={selectedCompany.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center"
-                  >
-                    🛒 Ir para o site
+                  <a href={selectedCompany.link} target="_blank" rel="noopener noreferrer">
+                    Abrir site
+                    <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
                   </a>
                 </Button>
-              </div>
-            )}
-          </div>
-          
-          <DialogClose asChild>
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="w-full mt-6 border-2 border-gray-300 text-gray-700 font-semibold py-3 hover:bg-gray-50"
-            >
-              <X size={20} className="mr-2" /> Fechar
-            </Button>
-          </DialogClose>
+              )}
+            </>
+          )}
         </DialogContent>
       </Dialog>
-
-      {/* Footer */}
-      <footer className="relative bg-gradient-to-r from-gray-900 via-purple-900 to-indigo-900 text-white py-16 mt-20">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <div className="text-center md:text-left">
-              <h3 className="text-3xl font-bold mb-4 text-gradient bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
-                Cupom Vantagens
-              </h3>
-              <p className="text-gray-300 leading-relaxed">
-                Seu destino para economizar com os melhores cupons de desconto. 
-                Encontre ofertas exclusivas e economize em suas compras favoritas.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <h4 className="text-xl font-semibold mb-4">Links Úteis</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li><button onClick={() => navigate('/sobre-nos')} className="hover:text-white transition-colors duration-300 text-left">Sobre nós</button></li>
-                <li><button onClick={() => navigate('/como-usar-cupons')} className="hover:text-white transition-colors duration-300 text-left">Como usar cupons</button></li>
-                <li><button onClick={() => navigate('/termos-de-uso')} className="hover:text-white transition-colors duration-300 text-left">Termos de uso</button></li>
-                <li><button onClick={() => navigate('/politica-de-privacidade')} className="hover:text-white transition-colors duration-300 text-left">Política de privacidade</button></li>
-                <li><button onClick={() => navigate('/contato')} className="hover:text-white transition-colors duration-300 text-left">Contato</button></li>
-              </ul>
-            </div>
-            
-            <div className="text-center md:text-right">
-              <h4 className="text-xl font-semibold mb-4">Economize Mais</h4>
-              <p className="text-gray-300 mb-4">
-                Cadastre-se para receber os melhores cupons por email
-              </p>
-              <div className="flex flex-col sm:flex-row gap-2">
-                <Input 
-                  type="email" 
-                  placeholder="Seu email" 
-                  className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 focus:ring-white/50"
-                />
-                <Button variant="gradient" size="sm" className="whitespace-nowrap">
-                  Cadastrar
-                </Button>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-white/20 pt-8 text-center">
-            <p className="text-gray-400">
-              © {new Date().getFullYear()} Cupom Vantagens. Todos os direitos reservados.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
