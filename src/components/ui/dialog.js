@@ -14,10 +14,7 @@ const DialogClose = DialogPrimitive.Close;
 const DialogOverlay = React.forwardRef(({ className, ...props }, ref) => (
   <DialogPrimitive.Overlay
     ref={ref}
-    className={cn(
-      "fixed inset-0 z-50 bg-[#1f1b16]/40",
-      className
-    )}
+    className={cn('fixed inset-0 z-50 bg-[#1f1b16]/40', className)}
     {...props}
   />
 ));
@@ -29,7 +26,7 @@ const DialogContent = React.forwardRef(({ className, children, ...props }, ref) 
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed left-1/2 top-1/2 z-50 w-[calc(100%-32px)] max-w-lg -translate-x-1/2 -translate-y-1/2 border border-hairline bg-surface p-6 shadow-[0_16px_48px_rgba(31,27,22,0.16)] focus:outline-none",
+        'fixed left-1/2 top-1/2 z-50 w-[calc(100%-32px)] max-w-lg -translate-x-1/2 -translate-y-1/2 border border-hairline bg-surface p-6 shadow-[0_16px_48px_rgba(31,27,22,0.16)] focus:outline-none',
         className
       )}
       style={{ borderRadius: 16 }}
@@ -47,32 +44,23 @@ const DialogContent = React.forwardRef(({ className, children, ...props }, ref) 
 ));
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
-const DialogHeader = ({
-  className,
-  ...props
-}) => (
-  <div
-    className={cn("flex flex-col space-y-1.5 text-left", className)}
-    {...props}
-  />
+const DialogHeader = ({ className, ...props }) => (
+  <div className={cn('flex flex-col space-y-1.5 text-left', className)} {...props} />
 );
-DialogHeader.displayName = "DialogHeader";
+DialogHeader.displayName = 'DialogHeader';
 
-const DialogFooter = ({
-  className,
-  ...props
-}) => (
+const DialogFooter = ({ className, ...props }) => (
   <div
-    className={cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", className)}
+    className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2', className)}
     {...props}
   />
 );
-DialogFooter.displayName = "DialogFooter";
+DialogFooter.displayName = 'DialogFooter';
 
 const DialogTitle = React.forwardRef(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={cn("text-[17px] font-medium leading-6", className)}
+    className={cn('text-[17px] font-medium leading-6', className)}
     {...props}
   />
 ));
@@ -81,7 +69,7 @@ DialogTitle.displayName = DialogPrimitive.Title.displayName;
 const DialogDescription = React.forwardRef(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn("text-sm leading-6 text-ink-secondary", className)}
+    className={cn('text-sm leading-6 text-ink-secondary', className)}
     {...props}
   />
 ));
@@ -97,5 +85,5 @@ export {
   DialogHeader,
   DialogFooter,
   DialogTitle,
-  DialogDescription,
+  DialogDescription
 };

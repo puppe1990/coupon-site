@@ -18,9 +18,10 @@ const HomePage = () => {
   );
   const featured = companies.find((company) => company.couponCode) || companies[0];
 
-  const countLabel = filteredCompanies.length === companies.length
-    ? `${companies.length} cupons`
-    : `${filteredCompanies.length} de ${companies.length} cupons`;
+  const countLabel =
+    filteredCompanies.length === companies.length
+      ? `${companies.length} cupons`
+      : `${filteredCompanies.length} de ${companies.length} cupons`;
 
   const handleCopy = async (code) => {
     try {
@@ -211,7 +212,9 @@ const HomePage = () => {
             <div className="mt-8 rounded-xl border border-dashed border-hairline bg-surface px-6 py-16 text-center">
               <Search className="mx-auto h-4 w-4 text-ink-muted" strokeWidth={1.5} />
               <p className="mt-4 text-sm font-medium">Nenhum cupom para “{searchTerm.trim()}”</p>
-              <p className="mt-1 text-sm text-ink-secondary">Tente outra empresa ou limpe a busca.</p>
+              <p className="mt-1 text-sm text-ink-secondary">
+                Tente outra empresa ou limpe a busca.
+              </p>
               <Button variant="secondary" className="mt-6" onClick={() => setSearchTerm('')}>
                 Limpar busca
               </Button>
@@ -222,7 +225,10 @@ const HomePage = () => {
 
       <SiteFooter />
 
-      <Dialog open={selectedCompany !== null} onOpenChange={(open) => !open && setSelectedCompany(null)}>
+      <Dialog
+        open={selectedCompany !== null}
+        onOpenChange={(open) => !open && setSelectedCompany(null)}
+      >
         <DialogContent className="max-w-[440px]">
           {selectedCompany && (
             <>

@@ -111,9 +111,7 @@ const CouponPage = () => {
                         {company.couponCode}
                       </p>
                     ) : (
-                      <p className="mt-1 text-sm text-white/80">
-                        O desconto é aplicado pelo link
-                      </p>
+                      <p className="mt-1 text-sm text-white/80">O desconto é aplicado pelo link</p>
                     )}
                   </div>
 

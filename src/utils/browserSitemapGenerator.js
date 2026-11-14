@@ -7,38 +7,38 @@ export const generateBrowserSitemap = (hostname = 'https://cupomvantagens.com.br
       url: '/',
       changefreq: 'daily',
       priority: 1.0,
-      lastmod: new Date().toISOString(),
+      lastmod: new Date().toISOString()
     },
     {
       url: '/como-usar-cupons',
       changefreq: 'monthly',
       priority: 0.8,
-      lastmod: new Date().toISOString(),
+      lastmod: new Date().toISOString()
     },
     {
       url: '/termos-de-uso',
       changefreq: 'monthly',
       priority: 0.5,
-      lastmod: new Date().toISOString(),
+      lastmod: new Date().toISOString()
     },
     {
       url: '/politica-de-privacidade',
       changefreq: 'monthly',
       priority: 0.5,
-      lastmod: new Date().toISOString(),
+      lastmod: new Date().toISOString()
     },
     {
       url: '/contato',
       changefreq: 'monthly',
       priority: 0.7,
-      lastmod: new Date().toISOString(),
+      lastmod: new Date().toISOString()
     },
     {
       url: '/sobre-nos',
       changefreq: 'monthly',
       priority: 0.6,
-      lastmod: new Date().toISOString(),
-    },
+      lastmod: new Date().toISOString()
+    }
   ];
 
   // Generate XML sitemap
@@ -46,7 +46,7 @@ export const generateBrowserSitemap = (hostname = 'https://cupomvantagens.com.br
   sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
 
   // Add static pages
-  staticPages.forEach(page => {
+  staticPages.forEach((page) => {
     sitemap += '  <url>\n';
     sitemap += `    <loc>${hostname}${page.url}</loc>\n`;
     sitemap += `    <lastmod>${page.lastmod}</lastmod>\n`;
@@ -56,7 +56,7 @@ export const generateBrowserSitemap = (hostname = 'https://cupomvantagens.com.br
   });
 
   // Add dynamic coupon pages
-  companies.forEach(company => {
+  companies.forEach((company) => {
     sitemap += '  <url>\n';
     sitemap += `    <loc>${hostname}/coupon/${company.id}</loc>\n`;
     sitemap += `    <lastmod>${new Date().toISOString()}</lastmod>\n`;
@@ -75,6 +75,6 @@ export const getSitemapStats = () => {
   return {
     staticPages: 6,
     dynamicPages: companies.length,
-    totalPages: 6 + companies.length,
+    totalPages: 6 + companies.length
   };
 };

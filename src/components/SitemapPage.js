@@ -51,7 +51,8 @@ const SitemapPage = () => {
           <li>Total: {stats?.totalPages || 0} URLs</li>
         </ul>
         <p className="mt-2">
-          <strong>Note:</strong> In production, this should be served as a static XML file at /sitemap.xml
+          <strong>Note:</strong> In production, this should be served as a static XML file at
+          /sitemap.xml
         </p>
       </div>
     </div>
