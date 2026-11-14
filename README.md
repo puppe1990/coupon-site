@@ -1,46 +1,47 @@
-# Coupon Site
+# Cupom Vantagens
 
-Coupon Site is a web application that helps users find the best deals and discounts from their favorite companies. It allows users to browse a list of companies, view their discounts, and access coupon codes.
+Diretório de 17 códigos de indicação para a primeira compra em apps e lojas brasileiras. React (CRA) + Tailwind, sem backend.
 
-## Getting Started
+## Rodar
 
-To run this application locally, you'll need to have Node.js and npm installed on your machine. Once you have those, follow these steps:
+```bash
+npm install
+npm start
+```
 
-1. Clone this repository to your local machine.
-2. Navigate to the project directory and run npm install to install the dependencies.
-3. Run npm start to start the development server.
-4. Open your web browser and go to http://localhost:3000 to view the application.
+Abre em http://localhost:3000.
 
-# Features
+## Validar
 
-Coupon Site includes the following features:
+Um comando roda lint, formatação e testes:
 
-- A list of companies with logos and discounts
-- A modal that displays coupon codes when a user clicks the "Show Coupon" button
-- A color scheme that uses blue and orange for a modern and professional look
+```bash
+npm run check
+```
 
-# Technologies Used
+O mesmo comando roda no pre-commit (husky) e no CI.
 
-Coupon Site was built with the following technologies:
+## Build
 
-- React
-- Bootstrap
-- CSS
+```bash
+npm run build
+```
 
-# Contributing
+O `prebuild` regenera `public/sitemap.xml` a partir de `src/companies.json`.
 
-Contributions to this project are welcome! To contribute, follow these steps:
+## Estrutura
 
-1. Fork this repository to your own GitHub account.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and commit them with descriptive messages.
-4. Push your branch to your forked repository.
-5. Create a pull request back to the original repository.
+- `src/companies.json` — fonte dos cupons: nome, desconto, código, link, categoria, validade e termos.
+- `src/lib/companies.js` — normaliza logo, nome exibido (`displayName`) e cor por categoria.
+- `src/lib/sitemap.js` — única implementação do sitemap; usada pelo script de build e por `/sitemap.xml`.
+- `src/components/HomePage.js` — busca, ticket em destaque e grade de cupons.
+- `src/components/CouponPage.js` — detalhe do cupom com código, termos e prévia do site.
+- `src/components/TicketPerforation.js` — canhoto verde com picote.
+- `src/hooks/useCopyToClipboard.js` — cópia do código com feedback de 2s.
+- `src/index.css` — tokens de papel e as classes `.ticket`, `.ticket-stub` e `.ticket-notch`.
+- `AGENTS.md` — regras e armadilhas para agentes.
 
-# License
+## Notas
 
-This project is licensed under the MIT License. See the LICENSE file for more information.
-
-# Contact
-
-If you have any questions or issues with this project, feel free to contact me at matheus.puppe@gmail.com.
+- O Jest do CRA 5 não resolve o `react-router` 7 (usa `exports` ESM). Teste módulos puros em `src/lib`, não páginas.
+- `public/sitemap.xml` é gerado no build; não edite à mão.

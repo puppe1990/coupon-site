@@ -23,14 +23,8 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
-      - name: Lint
-        run: npm run lint
-
-      - name: Formatação
-        run: npm run format:check
-
-      - name: Testes
-        run: CI=true npm test -- --watchAll=false
+      - name: Verificações
+        run: npm run check
 
       - name: Build
         run: npm run build

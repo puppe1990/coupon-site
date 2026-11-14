@@ -1,26 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight, Check, Copy } from 'lucide-react';
 import { Button } from './ui/button';
 import SiteFooter from './SiteFooter';
+import TicketPerforation from './TicketPerforation';
+import { useCopyToClipboard } from '../hooks/useCopyToClipboard';
 import { companies, categoryColor, displayName } from '../lib/companies';
 
 const CouponPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [copied, setCopied] = useState(false);
+  const { copiedCode, copyCode } = useCopyToClipboard();
 
   const company = companies.find((item) => item.id === id);
-
-  const handleCopy = async (code) => {
-    try {
-      await navigator.clipboard.writeText(code);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error('Falha ao copiar o código: ', err);
-    }
-  };
 
   if (!company) {
     return (
@@ -46,6 +38,8 @@ const CouponPage = () => {
       </div>
     );
   }
+
+  const copied = copiedCode === company.couponCode;
 
   const rows = [
     { label: 'Válido até', value: company.validUntil },
@@ -98,9 +92,7 @@ const CouponPage = () => {
                 </p>
               </div>
 
-              <div className="ticket-perforation ticket-stub">
-                <span className="ticket-notch ticket-notch-left" />
-                <span className="ticket-notch ticket-notch-right" />
+              <TicketPerforation>
                 <div className="flex flex-col gap-5 p-6 sm:flex-row sm:items-end sm:justify-between sm:p-8">
                   <div>
                     <p className="text-xs text-white/70">
@@ -120,7 +112,7 @@ const CouponPage = () => {
                       <Button
                         size="lg"
                         variant="inverse"
-                        onClick={() => handleCopy(company.couponCode)}
+                        onClick={() => copyCode(company.couponCode)}
                       >
                         {copied ? (
                           <>
@@ -149,7 +141,7 @@ const CouponPage = () => {
                     )}
                   </div>
                 </div>
-              </div>
+              </TicketPerforation>
             </div>
 
             {company.description && (

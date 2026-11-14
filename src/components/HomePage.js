@@ -4,13 +4,15 @@ import { ArrowUpRight, Check, Copy, Search, X } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './ui/dialog';
 import { Button } from './ui/button';
 import SiteFooter from './SiteFooter';
+import TicketPerforation from './TicketPerforation';
+import { useCopyToClipboard } from '../hooks/useCopyToClipboard';
 import { companies, categoryColor, displayName } from '../lib/companies';
 
 const HomePage = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCompany, setSelectedCompany] = useState(null);
-  const [copiedCode, setCopiedCode] = useState('');
+  const { copiedCode, copyCode } = useCopyToClipboard();
 
   const term = searchTerm.trim().toLowerCase();
   const filteredCompanies = companies.filter((company) =>
@@ -22,16 +24,6 @@ const HomePage = () => {
     filteredCompanies.length === companies.length
       ? `${companies.length} cupons`
       : `${filteredCompanies.length} de ${companies.length} cupons`;
-
-  const handleCopy = async (code) => {
-    try {
-      await navigator.clipboard.writeText(code);
-      setCopiedCode(code);
-      setTimeout(() => setCopiedCode(''), 2000);
-    } catch (err) {
-      console.error('Falha ao copiar o código: ', err);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-paper">
@@ -106,9 +98,7 @@ const HomePage = () => {
                   <p className="mt-2 text-sm text-ink-secondary">{displayName(featured.name)}</p>
                 </div>
                 {featured.couponCode && (
-                  <div className="ticket-perforation ticket-stub">
-                    <span className="ticket-notch ticket-notch-left" />
-                    <span className="ticket-notch ticket-notch-right" />
+                  <TicketPerforation>
                     <div className="flex items-center justify-between gap-4 p-4 pl-5">
                       <span className="code text-sm font-medium tracking-[0.08em] text-white">
                         {featured.couponCode}
@@ -116,7 +106,7 @@ const HomePage = () => {
                       <Button
                         size="sm"
                         variant="inverse"
-                        onClick={() => handleCopy(featured.couponCode)}
+                        onClick={() => copyCode(featured.couponCode)}
                       >
                         {copiedCode === featured.couponCode ? (
                           <>
@@ -131,7 +121,7 @@ const HomePage = () => {
                         )}
                       </Button>
                     </div>
-                  </div>
+                  </TicketPerforation>
                 )}
               </div>
             )}
@@ -181,7 +171,7 @@ const HomePage = () => {
                   <div className="mt-auto flex items-center justify-between gap-3 border-t border-hairline pt-4">
                     {company.couponCode ? (
                       <button
-                        onClick={() => handleCopy(company.couponCode)}
+                        onClick={() => copyCode(company.couponCode)}
                         aria-label={`Copiar código ${company.couponCode}`}
                         className="code flex items-center gap-2 rounded-sm bg-raised px-2 py-1.5 text-xs text-ink transition-colors hover:bg-raised-hover"
                       >
@@ -247,7 +237,7 @@ const HomePage = () => {
                     <Button
                       size="sm"
                       variant="inverse"
-                      onClick={() => handleCopy(selectedCompany.couponCode)}
+                      onClick={() => copyCode(selectedCompany.couponCode)}
                     >
                       {copiedCode === selectedCompany.couponCode ? (
                         <>
