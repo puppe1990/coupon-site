@@ -26,6 +26,8 @@
     "dev:api": "node --watch server/index.js",
     "build": "react-scripts build",
     "seed": "node scripts/seed.js",
+    "icons": "bash scripts/render-icons.sh",
+    "og": "bash scripts/render-og.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src server scripts --ext .js,.jsx",
