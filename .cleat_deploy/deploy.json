@@ -1,0 +1,7 @@
+{
+  "build_command": "npm ci --include=dev && npm run build",
+  "memory_max_mb": 400,
+  "node_version": "22",
+  "runtime": "node",
+  "start_command": "npm run serve"
+}
