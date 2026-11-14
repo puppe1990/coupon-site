@@ -78,11 +78,10 @@ The generated sitemap includes:
    - `/contato` (priority: 0.7, monthly)
    - `/sobre-nos` (priority: 0.6, monthly)
 
-2. **Dynamic Coupon Pages** (16 pages):
+2. **Dynamic Coupon Pages** (15 pages):
    - `/coupon/yuool`
-   - `/coupon/mercado-diferente`
    - `/coupon/facio`
-   - ... and all other coupons from companies.json
+   - ... and all other coupons from the seed
 
 ## Production Deployment
 

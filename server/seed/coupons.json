@@ -17,23 +17,6 @@
     }
   },
   {
-    "id": "mercado-diferente",
-    "name": "Cupom Mercado Diferente",
-    "logo": "mercado_diferente.png",
-    "discount": "15% na primeira cesta",
-    "couponCode": "",
-    "link": "https://mercdif.me/matheus-nunes-puppe",
-    "description": "Mercado Diferente é uma plataforma de delivery de supermercado que oferece produtos frescos e de qualidade com entrega rápida. Economize 15% na sua primeira cesta de compras.",
-    "category": "Delivery",
-    "validUntil": "31/12/2025",
-    "terms": "Válido apenas para primeira compra. Desconto aplicado automaticamente no carrinho.",
-    "companyInfo": {
-      "website": "https://mercdif.me",
-      "founded": "2019",
-      "description": "Plataforma de delivery de supermercado que conecta consumidores a estabelecimentos locais, oferecendo conveniência, produtos frescos e entrega rápida."
-    }
-  },
-  {
     "id": "facio",
     "name": "Facio",
     "logo": "facio.png",
@@ -48,23 +31,6 @@
       "website": "https://facio.com.br",
       "founded": "2021",
       "description": "Fintech brasileira que revoluciona o acesso ao salário, permitindo que funcionários antecipem parte de seus vencimentos de forma rápida, segura e sem burocracias."
-    }
-  },
-  {
-    "id": "trela",
-    "name": "Cupom Trela",
-    "logo": "trela.png",
-    "discount": "25% OFF na primeira compra",
-    "couponCode": "MAP9973",
-    "link": "https://trela.com.br/emporio/1?programamgm",
-    "description": "Trela é uma plataforma de e-commerce que oferece produtos diversos com preços competitivos e entrega rápida. Economize 25% na sua primeira compra com o código de desconto.",
-    "category": "E-commerce",
-    "validUntil": "31/12/2025",
-    "terms": "Válido apenas para primeira compra. Não cumulativo com outras promoções.",
-    "companyInfo": {
-      "website": "https://trela.com.br",
-      "founded": "2018",
-      "description": "Plataforma de e-commerce brasileira que oferece uma ampla variedade de produtos com foco em qualidade, preços competitivos e excelente experiência do cliente."
     }
   },
   {
