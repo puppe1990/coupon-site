@@ -1,5 +1,3 @@
-const DEFAULT_HOSTNAME = 'https://cupomvantagens.com.br';
-
 const STATIC_PAGES = [
   { url: '/', changefreq: 'daily', priority: 1 },
   { url: '/como-usar-cupons', changefreq: 'monthly', priority: 0.8 },
@@ -19,23 +17,23 @@ const buildUrlEntry = ({ loc, lastmod, changefreq, priority }) =>
     '  </url>'
   ].join('\n');
 
-const buildSitemapXml = ({
-  hostname = DEFAULT_HOSTNAME,
-  companies = [],
-  lastmod = new Date().toISOString()
-} = {}) => {
+const buildSitemapXml = ({ siteUrl, coupons = [], lastmod = new Date().toISOString() } = {}) => {
+  if (!siteUrl) {
+    throw new Error(`siteUrl é obrigatório para montar o sitemap (recebido: ${siteUrl})`);
+  }
+
   const staticEntries = STATIC_PAGES.map((page) =>
     buildUrlEntry({
-      loc: `${hostname}${page.url}`,
+      loc: `${siteUrl}${page.url}`,
       lastmod,
       changefreq: page.changefreq,
       priority: page.priority
     })
   );
 
-  const couponEntries = companies.map((company) =>
+  const couponEntries = coupons.map((coupon) =>
     buildUrlEntry({
-      loc: `${hostname}/coupon/${company.id}`,
+      loc: `${siteUrl}/coupon/${coupon.id}`,
       lastmod,
       changefreq: 'weekly',
       priority: 0.9
@@ -51,10 +49,4 @@ const buildSitemapXml = ({
   ].join('\n');
 };
 
-const getSitemapStats = (companies = []) => ({
-  staticPages: STATIC_PAGES.length,
-  dynamicPages: companies.length,
-  totalPages: STATIC_PAGES.length + companies.length
-});
-
-module.exports = { DEFAULT_HOSTNAME, STATIC_PAGES, buildSitemapXml, getSitemapStats };
+module.exports = { STATIC_PAGES, buildSitemapXml };

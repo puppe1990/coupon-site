@@ -1,41 +1,82 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight, Check, Copy } from 'lucide-react';
 import { Button } from './ui/button';
 import SiteFooter from './SiteFooter';
 import TicketPerforation from './TicketPerforation';
 import { useCopyToClipboard } from '../hooks/useCopyToClipboard';
-import { companies, categoryColor, displayName } from '../lib/companies';
+import { categoryColor, displayName } from '../lib/couponPresentation';
+import { fetchCoupon, registerCouponClick } from '../lib/api';
+
+const PageFrame = ({ children }) => (
+  <div className="flex min-h-screen flex-col bg-paper">
+    <header className="border-b border-hairline">
+      <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-6">
+        <a href="/" className="text-[17px] font-semibold tracking-[-0.01em]">
+          Cupom Vantagens
+        </a>
+      </div>
+    </header>
+    <main className="flex flex-1 items-center justify-center px-6">{children}</main>
+  </div>
+);
 
 const CouponPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { copiedCode, copyCode } = useCopyToClipboard();
+  const [company, setCompany] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
 
-  const company = companies.find((item) => item.id === id);
+  const loadCoupon = useCallback(async () => {
+    setIsLoading(true);
+    setLoadError('');
+    try {
+      setCompany(await fetchCoupon(id));
+    } catch (error) {
+      setLoadError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [id]);
+
+  useEffect(() => {
+    loadCoupon();
+  }, [loadCoupon]);
+
+  if (isLoading) {
+    return (
+      <PageFrame>
+        <p className="text-sm text-ink-secondary">Carregando cupom...</p>
+      </PageFrame>
+    );
+  }
+
+  if (loadError) {
+    return (
+      <PageFrame>
+        <div className="text-center">
+          <p className="text-sm font-medium">Não foi possível carregar o cupom</p>
+          <p className="mt-1 text-sm text-ink-secondary">{loadError}</p>
+          <Button onClick={loadCoupon} className="mt-6">
+            Tentar de novo
+          </Button>
+        </div>
+      </PageFrame>
+    );
+  }
 
   if (!company) {
     return (
-      <div className="flex min-h-screen flex-col bg-paper">
-        <header className="border-b border-hairline">
-          <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-6">
-            <button
-              onClick={() => navigate('/')}
-              className="text-[17px] font-semibold tracking-[-0.01em]"
-            >
-              Cupom Vantagens
-            </button>
-          </div>
-        </header>
-        <main className="flex flex-1 items-center justify-center px-6">
-          <div className="text-center">
-            <h1 className="text-[24px] font-medium">Cupom não encontrado</h1>
-            <Button onClick={() => navigate('/')} className="mt-6">
-              Todos os cupons
-            </Button>
-          </div>
-        </main>
-      </div>
+      <PageFrame>
+        <div className="text-center">
+          <h1 className="text-[24px] font-medium">Cupom não encontrado</h1>
+          <Button onClick={() => navigate('/')} className="mt-6">
+            Todos os cupons
+          </Button>
+        </div>
+      </PageFrame>
     );
   }
 
@@ -133,7 +174,12 @@ const CouponPage = () => {
                         size="lg"
                         variant={company.couponCode ? 'onBrand' : 'inverse'}
                       >
-                        <a href={company.link} target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={company.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => registerCouponClick(company.id)}
+                        >
                           Abrir site
                           <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
                         </a>

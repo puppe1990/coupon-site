@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fastify/static": "^10.1.11",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "better-sqlite3": "^13.2.0",
     "clsx": "^2.1.1",
+    "fastify": "^5.12.8",
     "lucide-react": "^0.453.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -19,22 +22,36 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "serve": "node server/index.js",
+    "dev:api": "node --watch server/index.js",
     "build": "react-scripts build",
+    "seed": "node scripts/seed.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src --ext .js,.jsx",
+    "lint": "eslint src server scripts --ext .js,.jsx",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test:ci": "CI=true react-scripts test --watchAll=false",
-    "check": "npm run lint && npm run format:check && npm run test:ci",
-    "prepare": "husky",
-    "generate-sitemap": "node scripts/generateSitemap.js",
-    "prebuild": "npm run generate-sitemap"
+    "test:server": "node --test server/*.test.js server/routes/*.test.js",
+    "check": "npm run lint && npm run format:check && npm run test:ci && npm run test:server",
+    "prepare": "husky"
   },
+  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "server/**/*.js",
+          "scripts/**/*.js"
+        ],
+        "env": {
+          "node": true
+        }
+      }
     ]
   },
   "browserslist": {
@@ -50,6 +67,7 @@
     ]
   },
   "devDependencies": {
+    "@faker-js/faker": "^10.6.0",
     "autoprefixer": "^10.4.20",
     "husky": "^9.1.7",
     "postcss": "^8.4.47",

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowUpRight, Check, Copy, Search, X } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './ui/dialog';
@@ -6,24 +6,46 @@ import { Button } from './ui/button';
 import SiteFooter from './SiteFooter';
 import TicketPerforation from './TicketPerforation';
 import { useCopyToClipboard } from '../hooks/useCopyToClipboard';
-import { companies, categoryColor, displayName } from '../lib/companies';
+import { categoryColor, displayName } from '../lib/couponPresentation';
+import { fetchCoupons } from '../lib/api';
+
+const buildCountLabel = (filteredCount, totalCount) =>
+  filteredCount === totalCount
+    ? `${totalCount} cupons`
+    : `${filteredCount} de ${totalCount} cupons`;
 
 const HomePage = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCompany, setSelectedCompany] = useState(null);
+  const [coupons, setCoupons] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
   const { copiedCode, copyCode } = useCopyToClipboard();
 
-  const term = searchTerm.trim().toLowerCase();
-  const filteredCompanies = companies.filter((company) =>
-    company.name.toLowerCase().includes(term)
-  );
-  const featured = companies.find((company) => company.couponCode) || companies[0];
+  const loadCoupons = useCallback(async () => {
+    setIsLoading(true);
+    setLoadError('');
+    try {
+      setCoupons(await fetchCoupons());
+    } catch (error) {
+      setLoadError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
 
-  const countLabel =
-    filteredCompanies.length === companies.length
-      ? `${companies.length} cupons`
-      : `${filteredCompanies.length} de ${companies.length} cupons`;
+  useEffect(() => {
+    loadCoupons();
+  }, [loadCoupons]);
+
+  const term = searchTerm.trim().toLowerCase();
+  const filteredCompanies = coupons.filter((company) => company.name.toLowerCase().includes(term));
+  const featured = coupons.find((company) => company.couponCode) || coupons[0];
+
+  const countLabel = isLoading
+    ? 'Carregando cupons'
+    : buildCountLabel(filteredCompanies.length, coupons.length);
 
   return (
     <div className="min-h-screen bg-paper">
@@ -133,72 +155,86 @@ const HomePage = () => {
             <p className="code figure text-xs text-ink-muted">{countLabel}</p>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredCompanies.map((company) => (
-              <article
-                key={company.id}
-                className="group flex flex-col overflow-hidden rounded-xl border border-hairline bg-surface transition-colors duration-150 hover:border-brand/30"
-              >
-                <div className="aspect-[16/10] overflow-hidden border-b border-hairline bg-raised">
-                  <img
-                    src={company.logo}
-                    alt={`Prévia do site ${displayName(company.name)}`}
-                    loading="lazy"
-                    className="h-full w-full object-cover object-top"
-                  />
-                </div>
+          {isLoading && <p className="mt-8 text-sm text-ink-secondary">Carregando cupons...</p>}
 
-                <div className="flex flex-1 flex-col p-5">
-                  <p className="flex items-center gap-2 text-xs text-ink-muted">
-                    <span
-                      className="h-1.5 w-1.5 rounded-full"
-                      style={{ backgroundColor: categoryColor(company.category) }}
+          {!isLoading && loadError && (
+            <div className="mt-8 rounded-xl border border-dashed border-hairline bg-surface px-6 py-16 text-center">
+              <p className="text-sm font-medium">Não foi possível carregar os cupons</p>
+              <p className="mt-1 text-sm text-ink-secondary">{loadError}</p>
+              <Button variant="secondary" className="mt-6" onClick={loadCoupons}>
+                Tentar de novo
+              </Button>
+            </div>
+          )}
+
+          {!isLoading && !loadError && (
+            <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {filteredCompanies.map((company) => (
+                <article
+                  key={company.id}
+                  className="group flex flex-col overflow-hidden rounded-xl border border-hairline bg-surface transition-colors duration-150 hover:border-brand/30"
+                >
+                  <div className="aspect-[16/10] overflow-hidden border-b border-hairline bg-raised">
+                    <img
+                      src={company.logo}
+                      alt={`Prévia do site ${displayName(company.name)}`}
+                      loading="lazy"
+                      className="h-full w-full object-cover object-top"
                     />
-                    {company.category}
-                  </p>
-                  <h2 className="mt-1 text-[15px] font-medium leading-6">
-                    <button
-                      onClick={() => navigate(`/coupon/${company.id}`)}
-                      className="text-left underline-offset-4 decoration-hairline hover:underline"
-                    >
-                      {displayName(company.name)}
-                    </button>
-                  </h2>
-                  <p className="mt-1 line-clamp-2 text-sm leading-5 text-ink-secondary">
-                    {company.discount}
-                  </p>
-
-                  <div className="mt-auto flex items-center justify-between gap-3 border-t border-hairline pt-4">
-                    {company.couponCode ? (
-                      <button
-                        onClick={() => copyCode(company.couponCode)}
-                        aria-label={`Copiar código ${company.couponCode}`}
-                        className="code flex items-center gap-2 rounded-sm bg-raised px-2 py-1.5 text-xs text-ink transition-colors hover:bg-raised-hover"
-                      >
-                        {company.couponCode}
-                        {copiedCode === company.couponCode ? (
-                          <Check className="h-4 w-4 text-brand" strokeWidth={1.5} />
-                        ) : (
-                          <Copy className="h-4 w-4 text-ink-muted" strokeWidth={1.5} />
-                        )}
-                      </button>
-                    ) : (
-                      <span className="text-xs text-ink-muted">Aplicado pelo link</span>
-                    )}
-                    <button
-                      onClick={() => setSelectedCompany(company)}
-                      className="inline-flex items-center gap-1 text-sm font-medium text-brand transition-colors hover:text-brand-hover"
-                    >
-                      Ver cupom
-                      <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
-                    </button>
                   </div>
-                </div>
-              </article>
-            ))}
-          </div>
 
-          {filteredCompanies.length === 0 && (
+                  <div className="flex flex-1 flex-col p-5">
+                    <p className="flex items-center gap-2 text-xs text-ink-muted">
+                      <span
+                        className="h-1.5 w-1.5 rounded-full"
+                        style={{ backgroundColor: categoryColor(company.category) }}
+                      />
+                      {company.category}
+                    </p>
+                    <h2 className="mt-1 text-[15px] font-medium leading-6">
+                      <button
+                        onClick={() => navigate(`/coupon/${company.id}`)}
+                        className="text-left underline-offset-4 decoration-hairline hover:underline"
+                      >
+                        {displayName(company.name)}
+                      </button>
+                    </h2>
+                    <p className="mt-1 line-clamp-2 text-sm leading-5 text-ink-secondary">
+                      {company.discount}
+                    </p>
+
+                    <div className="mt-auto flex items-center justify-between gap-3 border-t border-hairline pt-4">
+                      {company.couponCode ? (
+                        <button
+                          onClick={() => copyCode(company.couponCode)}
+                          aria-label={`Copiar código ${company.couponCode}`}
+                          className="code flex items-center gap-2 rounded-sm bg-raised px-2 py-1.5 text-xs text-ink transition-colors hover:bg-raised-hover"
+                        >
+                          {company.couponCode}
+                          {copiedCode === company.couponCode ? (
+                            <Check className="h-4 w-4 text-brand" strokeWidth={1.5} />
+                          ) : (
+                            <Copy className="h-4 w-4 text-ink-muted" strokeWidth={1.5} />
+                          )}
+                        </button>
+                      ) : (
+                        <span className="text-xs text-ink-muted">Aplicado pelo link</span>
+                      )}
+                      <button
+                        onClick={() => setSelectedCompany(company)}
+                        className="inline-flex items-center gap-1 text-sm font-medium text-brand transition-colors hover:text-brand-hover"
+                      >
+                        Ver cupom
+                        <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+
+          {!isLoading && !loadError && filteredCompanies.length === 0 && (
             <div className="mt-8 rounded-xl border border-dashed border-hairline bg-surface px-6 py-16 text-center">
               <Search className="mx-auto h-4 w-4 text-ink-muted" strokeWidth={1.5} />
               <p className="mt-4 text-sm font-medium">Nenhum cupom para “{searchTerm.trim()}”</p>

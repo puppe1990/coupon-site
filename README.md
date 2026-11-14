@@ -1,47 +1,72 @@
 # Cupom Vantagens
 
-Diretório de 17 códigos de indicação para a primeira compra em apps e lojas brasileiras. React (CRA) + Tailwind, sem backend.
+Diretório de 17 códigos de indicação para a primeira compra em apps e lojas brasileiras. React (CRA) + Tailwind no front, Fastify + SQLite no back.
 
 ## Rodar
 
 ```bash
 npm install
-npm start
+npm run dev:api   # API + sitemap em :3001 (cria e semeia data/app.db no primeiro boot)
+npm start         # front em :3000, com proxy para :3001
 ```
 
 Abre em http://localhost:3000.
 
 ## Validar
 
-Um comando roda lint, formatação e testes:
-
 ```bash
 npm run check
 ```
 
-O mesmo comando roda no pre-commit (husky) e no CI.
+Roda lint, formatação, testes do front (Jest) e testes do servidor (`node --test`). É o mesmo comando do pre-commit e do CI.
 
-## Build
+## Produção
 
 ```bash
 npm run build
+npm run serve
 ```
 
-O `prebuild` regenera `public/sitemap.xml` a partir de `src/companies.json`.
+`npm run serve` sobe o Fastify em `PORT`, serve `build/` e responde `/api/*` e `/sitemap.xml` na mesma origem. O banco é semeado na primeira subida se estiver vazio.
+
+## API
+
+- `GET /api/coupons?search=` — lista por posição, filtrando por nome ou categoria
+- `GET /api/coupons/:id` — detalhe ou 404
+- `POST /api/coupons/:id/click` — registra clique de saída (204)
+- `GET /sitemap.xml` — gerado do banco
+- `GET /api/health` — `{ "status": "ok" }`
+- `POST/PUT/DELETE /api/admin/coupons[/:id]` — protegidas por `x-admin-token` (sem `ADMIN_TOKEN`, respondem 503)
+
+## Variáveis
+
+| Variável            | Padrão                  | Uso                                        |
+| ------------------- | ----------------------- | ------------------------------------------ |
+| `PORT`              | `3001`                  | porta do Fastify                           |
+| `DATABASE_PATH`     | `./data/app.db`         | arquivo SQLite                             |
+| `BUILD_DIR`         | `./build`               | estáticos do CRA                           |
+| `SITE_URL`          | `http://localhost:3000` | host usado no sitemap                      |
+| `ADMIN_TOKEN`       | vazio                   | token das rotas de admin                   |
+| `REACT_APP_API_URL` | vazio                   | API em outra origem (vazio = mesma origem) |
+
+Veja `.env.example`.
 
 ## Estrutura
 
-- `src/companies.json` — fonte dos cupons: nome, desconto, código, link, categoria, validade e termos.
-- `src/lib/companies.js` — normaliza logo, nome exibido (`displayName`) e cor por categoria.
-- `src/lib/sitemap.js` — única implementação do sitemap; usada pelo script de build e por `/sitemap.xml`.
-- `src/components/HomePage.js` — busca, ticket em destaque e grade de cupons.
-- `src/components/CouponPage.js` — detalhe do cupom com código, termos e prévia do site.
+- `server/config.js` — leitura das variáveis de ambiente.
+- `server/db.js` — abre o SQLite (WAL) e aplica o schema.
+- `server/coupons.js` — repositório: validação, CRUD, cliques e seed.
+- `server/routes/` — rotas públicas e de admin.
+- `server/sitemap.js` — única implementação do sitemap.
+- `server/seed/coupons.json` — carga inicial do banco.
+- `public/images/` — prévias dos sites, servidas em `/images`.
+- `src/lib/api.js` — cliente da API.
+- `src/lib/couponPresentation.js` — nome exibido e cor por categoria.
 - `src/components/TicketPerforation.js` — canhoto verde com picote.
-- `src/hooks/useCopyToClipboard.js` — cópia do código com feedback de 2s.
-- `src/index.css` — tokens de papel e as classes `.ticket`, `.ticket-stub` e `.ticket-notch`.
+- `src/hooks/useCopyToClipboard.js` — cópia com feedback de 2s.
 - `AGENTS.md` — regras e armadilhas para agentes.
 
 ## Notas
 
-- O Jest do CRA 5 não resolve o `react-router` 7 (usa `exports` ESM). Teste módulos puros em `src/lib`, não páginas.
-- `public/sitemap.xml` é gerado no build; não edite à mão.
+- O Jest do CRA 5 não resolve o `react-router` 7 (usa `exports` ESM). Teste módulos puros em `src/lib`.
+- `npm start` lê o `proxy` do `package.json`; reinicie o dev server depois de mexer nele.

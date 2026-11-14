@@ -3,33 +3,37 @@
 ## Comandos
 
 - Instalar: `npm install`
-- Dev: `npm start` (porta 3000)
-- Validar tudo: `npm run check` (lint + format:check + test:ci)
-- Só testes: `npm run test:ci`
-- Build: `npm run build` (o `prebuild` regenera `public/sitemap.xml`)
+- API + sitemap: `npm run dev:api` (porta 3001, cria e semeia `data/app.db`)
+- Front: `npm start` (porta 3000, proxy para 3001)
+- Validar tudo: `npm run check` (lint + format + Jest + `node --test`)
+- Só servidor: `npm run test:server`
+- Produção: `npm run build && npm run serve`
+- Semear forçado: `npm run seed` (upsert, sobrescreve edições)
 
 ## Mapa
 
-- `src/companies.json` — fonte dos cupons (nome, desconto, código, link, categoria, validade, termos).
-- `src/lib/companies.js` — logo resolvida, `displayName` e `categoryColor`.
-- `src/lib/sitemap.js` — única implementação do sitemap; usada pelo script de build e por `/sitemap.xml`.
-- `src/components/HomePage.js` e `CouponPage.js` — telas principais.
-- `src/components/TicketPerforation.js` — canhoto verde com picote.
-- `src/hooks/useCopyToClipboard.js` — cópia com feedback de 2s.
-- `src/index.css` — tokens de papel e classes `.ticket`, `.ticket-stub`, `.ticket-notch`.
+- `server/seed/coupons.json` — carga inicial; o banco é a fonte em produção.
+- `server/coupons.js` — validação, CRUD, cliques, seed e mapeamento linha↔API.
+- `server/routes/coupons.js` — público. `server/routes/admin.js` — token `x-admin-token`.
+- `server/app.js` — Fastify, estáticos, `/sitemap.xml`, fallback do SPA.
+- `server/config.js` — env; nada de host/porta hardcoded fora daqui.
+- `server/testing/factories.js` — `makeCoupon` e `buildTestApp` com faker (seed fixo).
+- `src/lib/api.js` — cliente HTTP. `src/lib/couponPresentation.js` — nome e cor da categoria.
+- `public/images/` — prévias servidas em `/images` (o banco guarda só o caminho).
 
 ## Regras
 
-- Novo cupom: só `src/companies.json` + imagem em `src/images`. Não invente campos.
-- Não duplique geração de sitemap; importe de `src/lib/sitemap.js`.
-- Nome exibido vem de `displayName()`; não renomeie os dados.
-- Visual: papel `#F5F0E6`, superfície `#FFFDF8`, acento único `#146C43`. Sem gradiente, glow, blur ou blob.
-- Ícones: lucide, 16px, stroke 1.5.
+- Cupom novo: `INSERT` via admin ou `server/seed/coupons.json` + `npm run seed`. Nunca reintroduza JSON no front.
+- Contrato da API é camelCase e `companyInfo` aninhado; converta só em `server/coupons.js`.
+- Não duplique sitemap; use `server/sitemap.js` com `siteUrl` da config.
+- SQL sempre com parâmetros nomeados; erro precisa citar o valor recebido.
+- Visual: papel `#F5F0E6`, superfície `#FFFDF8`, acento `#146C43`. Sem gradiente, glow, blur ou blob.
 - Rode `npm run check` antes de commitar (o husky também roda).
-- Código em português para copy, inglês para identificadores.
 
 ## Armadilhas
 
-- Jest do CRA 5 não carrega `react-router` 7. Teste módulos puros em `src/lib`; não importe páginas em teste.
-- `public/sitemap.xml` é gerado no build; não edite à mão.
-- O ambiente pode estar com `NODE_ENV=production`; nesse caso `npm ci` omite devDependencies (prettier/husky). Use `--include=dev`.
+- `@fastify/static` com `wildcard: false` registra rota por arquivo; um `sitemap.xml` em `build/` colide com a rota dinâmica. Deixe o wildcard padrão.
+- O proxy do CRA vem do `package.json`; reinicie `npm start` depois de alterá-lo.
+- `node --test server` no Node 22 tenta executar `server/index.js`; use os globs do script `test:server`.
+- Jest do CRA 5 não carrega `react-router` 7; teste só `src/lib`.
+- `npm ci` com `NODE_ENV=production` omite devDependencies (prettier, husky, faker). Use `--include=dev`.

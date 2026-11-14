@@ -1,4 +1,4 @@
-import { displayName } from './companies';
+import { displayName } from './couponPresentation';
 
 test('remove o prefixo Cupom do nome exibido', () => {
   expect(displayName('Cupom Yuool')).toBe('Yuool');

@@ -1,10 +1,3 @@
-import companiesData from '../companies.json';
-
-export const companies = companiesData.map((company) => ({
-  ...company,
-  logo: company.logo.startsWith('http') ? company.logo : require(`../images/${company.logo}`)
-}));
-
 export const displayName = (name) => name.replace(/^Cupom\s+/, '');
 
 const categoryColors = {
