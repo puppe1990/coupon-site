@@ -20,23 +20,29 @@ This project includes a dynamic sitemap generator that automatically creates a s
 ## Usage
 
 ### Generate Sitemap Manually
+
 ```bash
 npm run generate-sitemap
 ```
 
 ### Build with Sitemap
+
 ```bash
 npm run build
 ```
+
 The sitemap will be automatically generated before the build process.
 
 ### View Sitemap in Browser
+
 Visit `/sitemap.xml` in your application to view the generated sitemap.
 
 ## Configuration
 
 ### Update Domain
+
 Before deploying, update the domain in these files:
+
 - `scripts/generateSitemap.js` (line 9)
 - `src/components/SitemapPage.js` (line 10)
 - `src/utils/browserSitemapGenerator.js` (line 3)
@@ -44,13 +50,17 @@ Before deploying, update the domain in these files:
 Replace `https://your-domain.com` with your actual domain.
 
 ### Customize Pages
+
 To add or modify static pages, edit the `staticPages` array in:
+
 - `scripts/generateSitemap.js`
 - `src/components/SitemapPage.js`
 - `src/utils/browserSitemapGenerator.js`
 
 ### Customize Coupon Pages
+
 The sitemap automatically includes all coupons from `src/companies.json`. Each coupon gets:
+
 - URL: `/coupon/{company.id}`
 - Priority: 0.9
 - Change frequency: weekly
@@ -77,9 +87,11 @@ The generated sitemap includes:
 ## Production Deployment
 
 For production, the sitemap will be available at:
+
 - `https://www.cupomvantagens.com.br/sitemap.xml`
 
 Make sure to:
+
 1. Update the domain in all configuration files
 2. Submit your sitemap to Google Search Console
 3. Add sitemap reference to your `robots.txt` file

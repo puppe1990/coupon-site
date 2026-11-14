@@ -3,26 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@radix-ui/react-alert-dialog": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "bootstrap": "^5.2.3",
-    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.453.0",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.7.2",
-    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
-    "react-ga": "^3.3.1",
-    "react-icons": "^4.7.1",
     "react-router-dom": "^7.8.2",
     "react-scripts": "5.0.1",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -30,6 +22,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint": "eslint src --ext .js,.jsx",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test:ci": "CI=true react-scripts test --watchAll=false",
+    "check": "npm run lint && npm run format:check && npm run test:ci",
+    "prepare": "husky",
     "generate-sitemap": "node scripts/generateSitemap.js",
     "prebuild": "npm run generate-sitemap"
   },
@@ -53,7 +51,9 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "husky": "^9.1.7",
     "postcss": "^8.4.47",
+    "prettier": "^3.10.1",
     "tailwindcss": "^3.4.14"
   }
 }
