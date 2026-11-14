@@ -7,3 +7,7 @@ public/sitemap.xml
 public/robots.txt
 public/ads.txt
 src/images
+public/fonts
+public/*.png
+public/*.ico
+public/og.html

@@ -60,6 +60,8 @@ Veja `.env.example`.
 - `server/sitemap.js` — única implementação do sitemap.
 - `server/seed/coupons.json` — carga inicial do banco.
 - `public/images/` — prévias dos sites, servidas em `/images`.
+- `public/favicon.svg` — marca da aba (canhoto). `npm run icons` gera `favicon.ico`, `logo192.png`, `logo512.png` e `apple-touch-icon.png`.
+- `public/og.html` — card Open Graph 1200×630. `npm run og` gera `public/og.png`.
 - `src/lib/api.js` — cliente da API.
 - `src/lib/couponPresentation.js` — nome exibido e cor por categoria.
 - `src/components/TicketPerforation.js` — canhoto verde com picote.

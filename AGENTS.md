@@ -28,6 +28,7 @@
 - Não duplique sitemap; use `server/sitemap.js` com `siteUrl` da config.
 - SQL sempre com parâmetros nomeados; erro precisa citar o valor recebido.
 - Visual: papel `#F5F0E6`, superfície `#FFFDF8`, acento `#146C43`. Sem gradiente, glow, blur ou blob.
+- Marca: `public/favicon.svg` (canhoto verde no tile). `npm run icons` gera ico/PWA; `npm run og` rasteriza `public/og.html` → `public/og.png` 1200×630.
 - Rode `npm run check` antes de commitar (o husky também roda).
 
 ## Armadilhas
