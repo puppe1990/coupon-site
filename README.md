@@ -1,6 +1,6 @@
 # Cupom Vantagens
 
-Diretório de 17 códigos de indicação para a primeira compra em apps e lojas brasileiras. React (CRA) + Tailwind no front, Fastify + SQLite no back.
+Diretório de 15 códigos de indicação para a primeira compra em apps e lojas brasileiras. React (CRA) + Tailwind no front, Fastify + SQLite no back.
 
 ## Rodar
 
